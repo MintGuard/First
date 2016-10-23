@@ -1,0 +1,5 @@
+C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\bin\Debug\First.exe
+C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\bin\Debug\First.pdb
+C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\obj\Debug\First.exe
+C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\obj\Debug\First.pdb
