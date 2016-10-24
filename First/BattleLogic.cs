@@ -64,6 +64,109 @@ namespace First
                 }
                 Console.WriteLine("\n");
             }
-        }  
         }
+        public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
+        {   
+            Random ActionRnd = new Random();
+            Num = ActionRnd.Next(2);
+            foreach (Mob SelectesMob in Mobs)
+            {
+                #region Атака моба(если игрок рядом в любом случае)
+                if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "E")) |
+                    ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "W")) |
+                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1)) && (SelectesMob.SightDirection == "S")) |
+                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1)) && (SelectesMob.SightDirection == "N")))
+                {
+                    SelectesMob.Attack(Player);
+                }
+                #endregion
+                else
+                {
+                    #region Ходьба моба(недописанная)
+                    if (Num == 0)
+                    {
+                        int temp;
+                        Random Rndm = new Random();
+                        temp = Rndm.Next(3);
+                        if (temp == 0)
+                        {
+                            SelectesMob.Move("W");
+                        }
+                        else if (temp == 1)
+                        {
+                            SelectesMob.Move("E");
+                        }
+                        else if (temp == 2)
+                        {
+                            SelectesMob.Move("N");
+                        }
+                        else if (temp == 3)
+                        {
+                            SelectesMob.Move("S");
+                        }
+                    }
+                    #endregion
+                    #region Поворот моба
+                    else if (Num == 1)
+                    {
+                        int temp;
+                        Random Rndm = new Random();
+                        temp = Rndm.Next(3);
+                        if (temp == 0)
+                        {
+                            if (SelectesMob.SightDirection != "N")
+                            {
+                                SelectesMob.Rotate("N");
+                            }
+                            else
+                            {
+                                SelectesMob.Rotate("S");
+                            }
+                        }
+                        else if (temp == 1)
+                        {
+                            if (SelectesMob.SightDirection != "S")
+                            {
+                                SelectesMob.Rotate("S");
+                            }
+                            else
+                            {
+                                SelectesMob.Rotate("N");
+                            }
+                        }
+                        else if (temp == 2)
+                        {
+                            if (SelectesMob.SightDirection != "W")
+                            {
+                                SelectesMob.Rotate("W");
+                            }
+                            else
+                            {
+                                SelectesMob.Rotate("E");
+                            }
+                        }
+                        else if (temp == 3)
+                        {
+                            if (SelectesMob.SightDirection != "E")
+                            {
+                                SelectesMob.Rotate("E");
+                            }
+                            else
+                            {
+                                SelectesMob.Rotate("W");
+                            }
+                        }
+                    }
+                    #endregion
+                    #region Поиск моба(недописанный)
+                    else if (Num == 2)
+                    {
+                        SelectesMob.Search();
+                    }
+                    #endregion
+                    else { }
+                }
+            }
+        }
+    }
 }
