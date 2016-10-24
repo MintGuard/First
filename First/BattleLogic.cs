@@ -65,5 +65,80 @@ namespace First
                 Console.WriteLine("\n");
             }
         }  
+
+        public static void MobsAction(IPerson Player, List<Mob> Mobs)
+        {
+
+            int ActionId = ActionRandomizer(3);
+            foreach (Mob SelectesMob in Mobs)
+            {
+                #region Координаты точки на которую смотри моб
+                int tempX = 0;
+                int tempY = 0;
+
+                if (SelectesMob.SightDirection == "N")
+                {
+                    tempX = SelectesMob.Position.x;
+                    tempY = SelectesMob.Position.y - 1;
+                }
+                if (SelectesMob.SightDirection == "S")
+                {
+                    tempX = SelectesMob.Position.x;
+                    tempY = SelectesMob.Position.y + 1;
+                }
+                if (SelectesMob.SightDirection == "W")
+                {
+                    tempX = SelectesMob.Position.x - 1;
+                    tempY = SelectesMob.Position.y;
+                }
+                if (SelectesMob.SightDirection == "E")
+                {
+                    tempX = SelectesMob.Position.x + 1;
+                    tempY = SelectesMob.Position.y;
+                }
+                #endregion
+
+                bool condition = false;
+                while (!condition)
+                {
+                    #region Ходьба. Условие недопилено еще
+                    if ((ActionId == 0))
+                    {
+                        string[] DirectionsId = new string[] {"N", "S", "W", "E"};
+
+                        SelectesMob.Move(DirectionsId[ActionRandomizer(4)]);
+                        condition = true;
+                    }
+                    #endregion
+                    #region Атака.
+                    else if ((ActionId == 1) && (Player.Position.x == tempX) && (Player.Position.y == tempY))
+                    {
+                        SelectesMob.Attack(Player);
+                        condition = true;
+                    }
+                    #endregion
+                    #region Поиск. Условие недопилено еще
+                    else if (ActionId == 2)
+                    {
+                        SelectesMob.Search();
+                        condition = true;
+                    }
+                    #endregion
+                    #region Перезапуск выбора действия
+                    else
+                    {
+                        ActionId = ActionRandomizer(3);
+                    }
+                    #endregion
+                }
+
+            }
         }
+
+        public static int ActionRandomizer(int maxNumber)
+        {
+            Random Rnd = new Random();
+            return Rnd.Next(maxNumber);
+        }
+    }
 }

@@ -7,6 +7,7 @@ namespace First
 {
     class Mob : Person
     {
+
         #region Конструкторы
         public Mob()
         {
