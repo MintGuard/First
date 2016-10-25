@@ -67,8 +67,6 @@ namespace First
         }
         public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
         {   
-            Random ActionRnd = new Random();
-            Num = ActionRnd.Next(2);
             foreach (Mob SelectesMob in Mobs)
             {
                 #region Атака моба(если игрок рядом в любом случае)
@@ -82,6 +80,8 @@ namespace First
                 #endregion
                 else
                 {
+                    Random ActionRnd = new Random();
+                    Num = ActionRnd.Next(2);
                     #region Ходьба моба(недописанная)
                     if (Num == 0)
                     {
@@ -165,6 +165,7 @@ namespace First
                     }
                     #endregion
                     else { }
+
                 }
             }
         }

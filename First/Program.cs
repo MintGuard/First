@@ -20,7 +20,7 @@ namespace First
 
         //Список для хранения объектов мобов
         public static List<Mob> Mobs = new List<Mob>();
-
+        delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
         static void Main(string[] args)
         {
             Console.WriteLine("Hi Masha. I'm your first test game which you will analyze and upgrade. Do your best!");
@@ -70,7 +70,7 @@ namespace First
 
             //
             while ((Player.Health > 0) && (Mobs[0] != null))
-            {
+            {   
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
                 string tempAction = Console.ReadLine();
                 if (tempAction == "M")
@@ -84,7 +84,7 @@ namespace First
                 }
                 if (tempAction == "A")
                 {
-                    
+                   
                 }
                 if (tempAction == "R")
                 {
@@ -113,13 +113,19 @@ namespace First
                             tempCheck = true;
                         }                        
                         else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
-                    }
-                    
+
+                      
+                    }                                       
                 }
             }
 
             Console.Read();
-       
+            if (Console.ReadKey().Key == ConsoleKey.Enter) 
+            {
+               Del d = BattleLogic.MobAction;
+               BattleLogic.ShowMap();
+            
+            };
             //
         }
     }
