@@ -19,28 +19,128 @@ namespace First
         target.Health -= this.Power;
     }
 
-    public void Move(string Direction)
+    public void MovePlayer(string Direction)
     {
-        if (Direction == "W")
+    if (Direction == "W")
         {
-            if (Program.Map[this.Position.x, this.Position.y] == "N")
+            if (Program.Map[this.Position.x - 1, this.Position.y] == "N")
                 {
                     this.Position.x--;
                     Program.Map[this.Position.x, this.Position.y] = "P";
                     Program.Map[this.Position.x + 1, this.Position.y] = "N";
                 }
-                else
+            else
+                {
+                    Console.WriteLine("Чувак там вроде кто то стоит, не?");
+                }     
+            }
+    else if (Direction == "E") 
+        {
+            if (Program.Map[this.Position.x + 1, this.Position.y] == "N")
+                {
+                    this.Position.x++;
+                    Program.Map[this.Position.x, this.Position.y] = "P";
+                    Program.Map[this.Position.x - 1, this.Position.y] = "N";
+                }
+             else
                 {
                     Console.WriteLine("Чувак там вроде кто то стоит, не?");
                 }
-            
+            }
+    else if (Direction == "S")
+        {
+            if (Program.Map[this.Position.x, this.Position.y - 1] == "N")
+                {
+                    this.Position.y--;
+                    Program.Map[this.Position.x, this.Position.y] = "P";
+                    Program.Map[this.Position.x, this.Position.y + 1] = "N";
+                }
+            else
+                {
+                    Console.WriteLine("Чувак там вроде кто то стоит, не?");
+                }
+            }
+    else if (Direction == "N")
+    {
+        if (Program.Map[this.Position.x, this.Position.y + 1] == "N")
+        {
+            this.Position.y++;
+            Program.Map[this.Position.x, this.Position.y] = "P";
+            Program.Map[this.Position.x, this.Position.y - 1] = "N";
         }
-        if (Direction == "E") this.Position.x++;
-        if (Direction == "S") this.Position.y--;
-        if (Direction == "N") this.Position.y++;
-
+        else
+        {
+            Console.WriteLine("Чувак там вроде кто то стоит, не?");
+        }
     }
-
+    else
+    {
+        Console.WriteLine("Нет такого направления");
+    }
+}
+    public void MobsMove(string Direction) 
+    {
+        if (Direction == "W")
+        {
+            if (Program.Map[this.Position.x - 1, this.Position.y] == "N")
+            {
+                this.Position.x--;
+                Program.Map[this.Position.x, this.Position.y] = "M";
+                Program.Map[this.Position.x + 1, this.Position.y] = "N";
+            }
+            else
+            {
+                this.Position.x++;
+                Program.Map[this.Position.x, this.Position.y] = "M";
+                Program.Map[this.Position.x - 1, this.Position.y] = "N";
+            }
+        }
+        if (Direction == "E")
+        {
+            if (Program.Map[this.Position.x + 1, this.Position.y] == "N")
+                {
+                    this.Position.x++;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x - 1, this.Position.y] = "N";
+                }
+            else 
+                {
+                    this.Position.x--;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x + 1, this.Position.y] = "N";
+                }
+        }
+        if (Direction == "N")
+        {
+            if (Program.Map[this.Position.x, this.Position.y + 1] == "N")
+                {
+                    this.Position.y++;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x, this.Position.y - 1] = "N";
+                }
+            else 
+                {
+                    this.Position.y--;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x, this.Position.y + 1] = "N";
+                }
+        }
+        if (Direction == "S")
+        {
+            if (Program.Map[this.Position.x, this.Position.y - 1] == "N")
+                {
+                    this.Position.y--;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x, this.Position.y + 1] = "N";
+                }
+            else 
+                {
+                    this.Position.y++;
+                    Program.Map[this.Position.x, this.Position.y] = "M";
+                    Program.Map[this.Position.x, this.Position.y - 1] = "N";
+                }
+        }
+    }
     public virtual void Search()
     {
     }

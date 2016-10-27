@@ -15,7 +15,8 @@ namespace First
         int Health { get; set; }
 
         void Attack(IPerson Target);
-        void Move(string Direction);
+        void MovePlayer(string Direction);
+        void MobsMove(string Direction);
         void Search();
         void Rotate(string SightDirection);
     }

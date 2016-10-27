@@ -90,19 +90,19 @@ namespace First
                         temp = Rndm.Next(3);
                         if (temp == 0)
                         {
-                            SelectesMob.Move("W");
+                            SelectesMob.MobsMove("W");
                         }
                         else if (temp == 1)
                         {
-                            SelectesMob.Move("E");
+                            SelectesMob.MobsMove("E");
                         }
                         else if (temp == 2)
                         {
-                            SelectesMob.Move("N");
+                            SelectesMob.MobsMove("N");
                         }
                         else if (temp == 3)
                         {
-                            SelectesMob.Move("S");
+                            SelectesMob.MobsMove("S");
                         }
                     }
                     #endregion

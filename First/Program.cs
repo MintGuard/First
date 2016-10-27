@@ -9,7 +9,7 @@ namespace First
     class Program
     {
         //Карта
-        public static string[,] Map = new string[10,10];
+        public static string[,] Map = new string[10, 10];
 
         //Количество мобов, задается вначале игры
         public static int MobCount;
@@ -35,7 +35,7 @@ namespace First
             {
                 Thread.Sleep(1000);
 
-                List<string> TEMPList = new List<string> {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+                List<string> TEMPList = new List<string> { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
                 foreach (string TEMPValue in TEMPList)
                 {
                     //Console.WriteLine(TEMPValue +" "+ TEMPValue.GetType().ToString());
@@ -46,7 +46,7 @@ namespace First
                     }
                 }
                 if ((TEMP != "Okay") && (TEMP != null)) throw new Exception("Ой пиздеееец. Все упало!");
-                
+
             }
             catch (Exception ex)
             {
@@ -59,7 +59,7 @@ namespace First
 
             //Создание игрока
             IPerson Player = new Player("Li", 1000, 10, "N");
-            BattleLogic.PlayerPositioning(Player, x : 4, y : 4);
+            BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
 
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
@@ -70,63 +70,72 @@ namespace First
 
             //
             while ((Player.Health > 0) && (Mobs[0] != null))
-            {   
+            {
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
                 string tempAction = Console.ReadLine();
                 if (tempAction == "M")
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    if (Console.ReadKey().Key == ConsoleKey.UpArrow) Player.Move("N");
-                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow) Player.Move("S");
-                    else if (Console.ReadKey().Key == ConsoleKey.LeftArrow) Player.Move("W");
-                    else if (Console.ReadKey().Key == ConsoleKey.RightArrow) Player.Move("E");
+                    if (Console.ReadKey().Key == ConsoleKey.UpArrow) Player.MovePlayer("N");
+                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow) Player.MovePlayer("S");
+                    else if (Console.ReadKey().Key == ConsoleKey.LeftArrow) Player.MovePlayer("W");
+                    else if (Console.ReadKey().Key == ConsoleKey.RightArrow) Player.MovePlayer("E");
                     else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
                 }
                 if (tempAction == "A")
                 {
-                   
-                }
-                if (tempAction == "R")
-                {
-                    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    bool tempCheck = false;
-                    while (!tempCheck)
+                    foreach (Mob SelectesMob in Mobs)
                     {
-                        if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (Player.SightDirection != "N"))
+                        if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "E")) |
+                    ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "W")) |
+                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1)) && (SelectesMob.SightDirection == "S")) |
+                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1)) && (SelectesMob.SightDirection == "N")))
                         {
-                            Player.Rotate("N");
-                            tempCheck = true;
+                            Player.Attack(SelectesMob);
                         }
-                        else if ((Console.ReadKey().Key == ConsoleKey.DownArrow)&& (Player.SightDirection != "S"))
+                    }
+                    if (tempAction == "R")
+                    {
+                        Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                        bool tempCheck = false;
+                        while (!tempCheck)
                         {
-                            Player.Rotate("S");
-                            tempCheck = true;
-                        }
-                        else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow)&& (Player.SightDirection != "W"))
-                        {
-                            Player.Rotate("W");
-                            tempCheck = true;
-                        }
-                        else if ((Console.ReadKey().Key == ConsoleKey.RightArrow)&& (Player.SightDirection != "E"))
-                        {
-                            Player.Rotate("E");
-                            tempCheck = true;
-                        }                        
-                        else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
+                            if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (Player.SightDirection != "N"))
+                            {
+                                Player.Rotate("N");
+                                tempCheck = true;
+                            }
+                            else if ((Console.ReadKey().Key == ConsoleKey.DownArrow) && (Player.SightDirection != "S"))
+                            {
+                                Player.Rotate("S");
+                                tempCheck = true;
+                            }
+                            else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow) && (Player.SightDirection != "W"))
+                            {
+                                Player.Rotate("W");
+                                tempCheck = true;
+                            }
+                            else if ((Console.ReadKey().Key == ConsoleKey.RightArrow) && (Player.SightDirection != "E"))
+                            {
+                                Player.Rotate("E");
+                                tempCheck = true;
+                            }
+                            else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
 
-                      
-                    }                                       
+
+                        }
+                    }
                 }
-            }
 
-            Console.Read();
-            if (Console.ReadKey().Key == ConsoleKey.Enter) 
-            {
-               Del d = BattleLogic.MobAction;
-               BattleLogic.ShowMap();
-            
-            };
-            //
+                Console.Read();
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    Del d = BattleLogic.MobAction;
+                    BattleLogic.ShowMap();
+
+                };
+                //
+            }
         }
     }
 }
