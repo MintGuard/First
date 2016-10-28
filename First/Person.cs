@@ -141,8 +141,26 @@ namespace First
                 }
         }
     }
-    public virtual void Search()
+    public virtual void Search(List<Mob> Mobs, IPerson Player, int x, int y)
     {
+        foreach (Mob SelectesMob in Mobs)
+    {
+        {
+            if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y)) |
+                           ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y)) |
+                           ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1))) |
+                           ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1))))
+            {
+                int[] coor = { x, y };
+                SelectesMob.Position.x = x;
+                SelectesMob.Position.y = y;
+                Console.WriteLine("Координаты мобов" + ":" + " " + coor);
+            }
+            else {
+                Console.WriteLine("Поблизости нет мобов");
+                }
+            }
+        }
     }
 
     public void Rotate(string RotateDirection)

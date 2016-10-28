@@ -21,6 +21,7 @@ namespace First
         //Список для хранения объектов мобов
         public static List<Mob> Mobs = new List<Mob>();
         delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
+        delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
         static void Main(string[] args)
         {
             Console.WriteLine("Hi Masha. I'm your first test game which you will analyze and upgrade. Do your best!");
@@ -125,6 +126,11 @@ namespace First
 
                         }
                     }
+                }
+                else if (tempAction == "S")
+                {   
+                   
+
                 }
 
                 Console.Read();
