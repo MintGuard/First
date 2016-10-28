@@ -6,6 +6,9 @@ using System.Text;
 
 namespace First
 {
+    /// <summary>
+    /// Класс мусорка
+    /// </summary>
     class BattleLogic
     {
         public static int[] RandomCoordinates(int Count)
@@ -73,29 +76,7 @@ namespace First
             foreach (Mob SelectesMob in Mobs)
             {
                 #region Координаты точки на которую смотри моб
-                int tempX = 0;
-                int tempY = 0;
-
-                if (SelectesMob.SightDirection == "N")
-                {
-                    tempX = SelectesMob.Position.x;
-                    tempY = SelectesMob.Position.y - 1;
-                }
-                if (SelectesMob.SightDirection == "S")
-                {
-                    tempX = SelectesMob.Position.x;
-                    tempY = SelectesMob.Position.y + 1;
-                }
-                if (SelectesMob.SightDirection == "W")
-                {
-                    tempX = SelectesMob.Position.x - 1;
-                    tempY = SelectesMob.Position.y;
-                }
-                if (SelectesMob.SightDirection == "E")
-                {
-                    tempX = SelectesMob.Position.x + 1;
-                    tempY = SelectesMob.Position.y;
-                }
+                int[] sightCoordinates = SightPoint(SelectesMob);
                 #endregion
 
                 bool condition = false;
@@ -111,7 +92,7 @@ namespace First
                     }
                     #endregion
                     #region Атака.
-                    else if ((ActionId == 1) && (Player.Position.x == tempX) && (Player.Position.y == tempY))
+                    else if ((ActionId == 1) && (Player.Position.x == sightCoordinates[0]) && (Player.Position.y == sightCoordinates[1]))
                     {
                         SelectesMob.Attack(Player);
                         condition = true;
@@ -139,6 +120,30 @@ namespace First
         {
             Random Rnd = new Random();
             return Rnd.Next(maxNumber);
+        }
+
+        public static int[] SightPoint(IPerson Peperson)
+        {
+            if (Peperson.SightDirection == "N")
+            {
+                int[] result = new int[] { Peperson.Position.x, Peperson.Position.y - 1 };
+                return result;
+            }
+            else if (Peperson.SightDirection == "S")
+            {
+                int[] result = new int[] { Peperson.Position.x, Peperson.Position.y + 1 };
+                return result;
+            }
+            else if (Peperson.SightDirection == "W")
+            {
+                int[] result = new int[] { Peperson.Position.x - 1, Peperson.Position.y };
+                return result;
+            }
+            else //if (Peperson.SightDirection == "E")
+            {
+                int[] result = new int[] { Peperson.Position.x + 1, Peperson.Position.y };
+                return result;
+            }
         }
     }
 }

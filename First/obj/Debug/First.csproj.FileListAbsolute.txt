@@ -5,3 +5,6 @@ C:\Users\Owner\Google Диск\Работа\Тестовые задания\Just
 C:\Users\Owner\Google Диск\Работа\Тестовые задания\JustTest\First\First\obj\Debug\First.pdb
 D:\Git\GitLearning\First\First\First\obj\Debug\First.exe
 D:\Git\GitLearning\First\First\First\obj\Debug\First.pdb
+D:\Git\GitLearning\First\First\First\bin\Debug\First.exe
+D:\Git\GitLearning\First\First\First\bin\Debug\First.pdb
+D:\Git\GitLearning\First\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
