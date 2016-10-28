@@ -1,2 +1,4 @@
 First/bin/Debug/First.vshost.exe
 .vs/First/v14/.suo
+*.pdb
+*.exe
