@@ -8,6 +8,11 @@ namespace First
 {
     class BattleLogic
     {
+        /// <summary>
+        /// Метод получения рандомных координат
+        /// </summary>
+        /// <param name="Count">Перебор мобов</param>
+        /// <returns></returns>
         public static int[] RandomCoordinates(int Count)
         {
             int[] result = new int[2];
@@ -19,6 +24,12 @@ namespace First
             return result;
         }
 
+        /// <summary>
+        /// Метод, располагающий игрока на карте
+        /// </summary>
+        /// <param name="Player">Тип персонажа</param>
+        /// <param name="x">Координата x</param>
+        /// <param name="y">Координата y</param>
         public static void PlayerPositioning(IPerson Player, int x, int y)
         {
             Player.Position.x = x;
@@ -26,6 +37,9 @@ namespace First
             Program.Map[Player.Position.x, Player.Position.y] = "P";
         }
 
+        /// <summary>
+        /// Метод создания карты
+        /// </summary>
         public static void CreateMap()
         {
             for (int i = 0; i < 10; i++)
@@ -37,6 +51,9 @@ namespace First
             }
         }
 
+        /// <summary>
+        /// Метод, генерирующий мобов
+        /// </summary>
         public static void MobGenerator()
         {
             for (int i = 0; i < Program.MobCount; i++)
@@ -55,6 +72,9 @@ namespace First
             }
         }
 
+        /// <summary>
+        /// Метод отображения карты
+        /// </summary>
         public static void ShowMap()
         {
             for (int i = 0; i < 10; i++)
@@ -66,6 +86,13 @@ namespace First
                 Console.WriteLine("\n");
             }
         }
+
+        /// <summary>
+        /// Метод, вызывающий действия мобов
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <param name="Player"></param>
+        /// <param name="Mobs"></param>
         public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
         {   
             foreach (Mob SelectesMob in Mobs)

@@ -25,10 +25,13 @@ namespace First
             this.Health = hp;
             this.Power = power;
             this.SightDirection = sd;
+
+            //ToDo Исправить, убрать инициализацию прямо в классе
+            this.ClosePoints = new PointsAround(Position);
         }
         #endregion
         //ToDo Исправить косяки
-        public override void Search()
+        public override void Search(List<Mob> Mobs, IPerson Player, int x, int y)
         {
 
         }

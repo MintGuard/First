@@ -7,6 +7,9 @@ namespace First
 {
     interface IPerson
     {
+        /// <summary>
+        /// Поля, которые есть у всех персонажей
+        /// </summary>
         string PersonType { get ; set; }
         string Name { get; set; }
         string SightDirection { get; set; }
@@ -15,11 +18,15 @@ namespace First
         int Power { get; set; }
         int Health { get; set; }
 
+        /// <summary>
+        /// Методы, которые выполняют все персонажи
+        /// </summary>
+        /// <param name="Target"></param>
         void Attack(IPerson Target);
         //ToDo ПЕРЕСТАТЬ ТУПИТЬ! Исправить это убожество. Какие нахуй два абсолютно одинаковых метода?
         void MovePlayer(string Direction);
         void MobsMove(string Direction);
-
+        
         void Search(List<Mob> Mobs, IPerson Player, int x, int y);
         void Rotate(string SightDirection);
     }

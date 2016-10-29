@@ -26,10 +26,13 @@ namespace First
             this.Power = power;
             this.Position = new Position();
             this.SightDirection = sd;
-            }
+
+            //ToDo Исправить, убрать инициализацию прямо в классе
+            this.ClosePoints = new PointsAround(Position);
+        }
         #endregion
 
-        public override void Search()
+        public override void Search(List<Mob> Mobs, IPerson Player, int x, int y)
         {
 
         }

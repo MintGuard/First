@@ -73,6 +73,8 @@ namespace First
             //
             while ((Player.Health > 0) && (Mobs[0] != null))
             {
+                //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
+                #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
                 string tempAction = Console.ReadLine();
                 if (tempAction == "M")
@@ -135,6 +137,9 @@ namespace First
                 }
 
                 Console.Read();
+                #endregion
+
+                //ToDo Переписать вызов действий мобов
                 if (Console.ReadKey().Key == ConsoleKey.Enter)
                 {
                     Del d = BattleLogic.MobAction;
