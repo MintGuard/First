@@ -27,7 +27,7 @@ namespace First
             this.SightDirection = sd;
         }
         #endregion
-
+        //ToDo Исправить косяки
         public override void Search()
         {
 

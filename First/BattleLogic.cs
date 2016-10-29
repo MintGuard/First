@@ -51,6 +51,7 @@ namespace First
                 Program.Mobs[i].Position.x = Program.coordinates[0];
                 Program.Mobs[i].Position.y = Program.coordinates[1];
                 Program.Map[Program.coordinates[0], Program.coordinates[1]] = "M";
+                Program.Mobs[i].ClosePoints = new PointsAround(Program.Mobs[i].Position);
             }
         }
 

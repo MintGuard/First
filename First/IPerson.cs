@@ -11,13 +11,16 @@ namespace First
         string Name { get; set; }
         string SightDirection { get; set; }
         Position Position { get; set; }
+        PointsAround ClosePoints { get; set; }
         int Power { get; set; }
         int Health { get; set; }
 
         void Attack(IPerson Target);
+        //ToDo ПЕРЕСТАТЬ ТУПИТЬ! Исправить это убожество. Какие нахуй два абсолютно одинаковых метода?
         void MovePlayer(string Direction);
         void MobsMove(string Direction);
-        void Search();
+
+        void Search(List<Mob> Mobs, IPerson Player, int x, int y);
         void Rotate(string SightDirection);
     }
 }
