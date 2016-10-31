@@ -7,10 +7,10 @@ namespace First
 {
     class PointsAround
     {
-        private Position Up = new Position();
-        private Position Down = new Position();
-        private Position Left = new Position();
-        private Position Right = new Position();
+       public Position Up = new Position();
+       public Position Down = new Position();
+       public Position Left = new Position();
+       public Position Right = new Position();
 
         public PointsAround(Position point)
         {

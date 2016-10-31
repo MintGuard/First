@@ -19,6 +19,11 @@ namespace First
         {
             target.Health -= this.Power;
         }
+
+        public void Move()
+        { 
+        
+        }
     
         //ToDo Исправить методы Мув и переделать или дописать методы Серч и Ротэйт
         public void MovePlayer(string Direction)

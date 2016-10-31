@@ -189,7 +189,7 @@ namespace First
                     #region Поиск моба(недописанный)
                     else if (Num == 2)
                     {
-                        SelectesMob.Search();
+                        
                     }
                     #endregion
                     else { }

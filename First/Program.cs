@@ -71,6 +71,14 @@ namespace First
             #endregion
 
             //
+            Dictionary<ConsoleKey, Position> dir = new Dictionary<ConsoleKey, Position>
+        {
+            {ConsoleKey.UpArrow, Player.ClosePoints.Up},
+            {ConsoleKey.DownArrow, Player.ClosePoints.Down},
+            {ConsoleKey.LeftArrow, Player.ClosePoints.Left},
+            {ConsoleKey.RightArrow, Player.ClosePoints.Right},
+        };
+
             while ((Player.Health > 0) && (Mobs[0] != null))
             {
                 //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
@@ -79,12 +87,26 @@ namespace First
                 string tempAction = Console.ReadLine();
                 if (tempAction == "M")
                 {
-                    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    if (Console.ReadKey().Key == ConsoleKey.UpArrow) Player.MovePlayer("N");
-                    else if (Console.ReadKey().Key == ConsoleKey.DownArrow) Player.MovePlayer("S");
-                    else if (Console.ReadKey().Key == ConsoleKey.LeftArrow) Player.MovePlayer("W");
-                    else if (Console.ReadKey().Key == ConsoleKey.RightArrow) Player.MovePlayer("E");
-                    else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
+                    foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
+                    {
+                        Console.WriteLine("Нажми стрелку");
+                        Console.ReadKey();
+                        if (Console.ReadKey().Key == keyValue.Key)
+                        {
+
+                            Player.Position = keyValue.Value;
+                        }
+                        else 
+                        {
+                            Console.WriteLine("Не то жмешь");
+                        }
+                    }
+                    //Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                    //if (Console.ReadKey().Key == ConsoleKey.UpArrow) Player.MovePlayer("N");
+                    //else if (Console.ReadKey().Key == ConsoleKey.DownArrow) Player.MovePlayer("S");
+                    //else if (Console.ReadKey().Key == ConsoleKey.LeftArrow) Player.MovePlayer("W");
+                    //else if (Console.ReadKey().Key == ConsoleKey.RightArrow) Player.MovePlayer("E");
+                    //else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
                 }
                 if (tempAction == "A")
                 {
