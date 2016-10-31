@@ -28,7 +28,7 @@ namespace First
             this.SightDirection = sd;
 
             //ToDo Исправить, убрать инициализацию прямо в классе
-            this.ClosePoints = new PointsAround(Position);
+            this.ClosePoints = new PointsAround(Position);   
         }
         #endregion
 

@@ -113,25 +113,25 @@ namespace First
                     #region Ходьба моба(недописанная)
                     if (Num == 0)
                     {
-                        int temp;
-                        Random Rndm = new Random();
-                        temp = Rndm.Next(3);
-                        if (temp == 0)
-                        {
-                            SelectesMob.MobsMove("W");
-                        }
-                        else if (temp == 1)
-                        {
-                            SelectesMob.MobsMove("E");
-                        }
-                        else if (temp == 2)
-                        {
-                            SelectesMob.MobsMove("N");
-                        }
-                        else if (temp == 3)
-                        {
-                            SelectesMob.MobsMove("S");
-                        }
+                        //int temp;
+                        //Random Rndm = new Random();
+                        //temp = Rndm.Next(3);
+                        //if (temp == 0)
+                        //{
+                        //    SelectesMob.MobsMove("W");
+                        //}
+                        //else if (temp == 1)
+                        //{
+                        //    SelectesMob.MobsMove("E");
+                        //}
+                        //else if (temp == 2)
+                        //{
+                        //    SelectesMob.MobsMove("N");
+                        //}
+                        //else if (temp == 3)
+                        //{
+                        //    SelectesMob.MobsMove("S");
+                        //}
                     }
                     #endregion
                     #region Поворот моба
