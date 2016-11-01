@@ -31,11 +31,17 @@ namespace First
                 {ConsoleKey.RightArrow, this.ClosePoints.Right},
             };
         }
-        
-        public void Attack(IPerson target)
-        {
-            target.Health -= this.Power;
-        }
+
+           public void Attack(IPerson target)
+           {
+               foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
+               {
+                   if (Program.Map[target.Position.x, target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
+                   {
+                       target.Health -= this.Power;
+                   }
+               }
+           }
 
         public void Move(IPerson PersonToMove)
         {
@@ -45,7 +51,7 @@ namespace First
                 //Console.ReadKey();
                 if ((Console.ReadKey().Key == keyValue.Key) && (Program.Map[keyValue.Value.x, keyValue.Value.y] == "N"))
                 {
-
+                    Program.Map[this.Position.x, this.Position.y] = "N";
                     this.Position = keyValue.Value;
                 }
                 //else
@@ -179,24 +185,34 @@ namespace First
     //                }
     //        }
     //    }
-        public virtual void Search(List<Mob> Mobs, IPerson Player, int x, int y)
+        //public virtual void Search(List<Mob> Mobs, IPerson Player, int x, int y)
+        //{
+        //    foreach (Mob SelectesMob in Mobs)
+        //{
+        //    {
+        //        if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y)) |
+        //                       ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y)) |
+        //                       ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1))) |
+        //                       ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1))))
+        //        {
+        //            int[] coor = { x, y };
+        //            SelectesMob.Position.x = x;
+        //            SelectesMob.Position.y = y;
+        //            Console.WriteLine("Координаты мобов" + ":" + " " + coor);
+        //        }
+        //        else {
+        //            Console.WriteLine("Поблизости нет мобов");
+        //            }
+        //        }
+        //    }
+        //}
+        public virtual void Search(IPerson Target)
         {
-            foreach (Mob SelectesMob in Mobs)
-        {
+            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
             {
-                if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y)) |
-                               ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y)) |
-                               ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1))) |
-                               ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1))))
+                if (Program.Map[Target.Position.x, Target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
                 {
-                    int[] coor = { x, y };
-                    SelectesMob.Position.x = x;
-                    SelectesMob.Position.y = y;
-                    Console.WriteLine("Координаты мобов" + ":" + " " + coor);
-                }
-                else {
-                    Console.WriteLine("Поблизости нет мобов");
-                    }
+                    Console.WriteLine(Target.Position);
                 }
             }
         }

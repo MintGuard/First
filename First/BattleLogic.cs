@@ -96,15 +96,14 @@ namespace First
         public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
         {   
             foreach (Mob SelectesMob in Mobs)
-            {
+            {   
                 #region Атака моба(если игрок рядом в любом случае)
-                if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "E")) |
-                    ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "W")) |
-                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1)) && (SelectesMob.SightDirection == "S")) |
-                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1)) && (SelectesMob.SightDirection == "N")))
-                {
+               bool tempCheck = false;
+                        if (!tempCheck)
+                        {
                     SelectesMob.Attack(Player);
-                }
+                    tempCheck = true;
+                        }
                 #endregion
                 else
                 {
@@ -186,10 +185,10 @@ namespace First
                         }
                     }
                     #endregion
-                    #region Поиск моба(недописанный)
+                    #region Поиск моба
                     else if (Num == 2)
                     {
-                        
+                        SelectesMob.Search(Player);
                     }
                     #endregion
                     else { }

@@ -32,7 +32,7 @@ namespace First
         }
         #endregion
 
-        public override void Search(List<Mob> Mobs, IPerson Player, int x, int y)
+        public override void Search(IPerson Mob)
         {
 
         }

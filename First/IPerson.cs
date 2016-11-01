@@ -24,10 +24,9 @@ namespace First
         /// <param name="Target"></param>
         void Attack(IPerson Target);
         //ToDo ПЕРЕСТАТЬ ТУПИТЬ! Исправить это убожество. Какие нахуй два абсолютно одинаковых метода?
-        void MovePlayer(string Direction);
-        void MobsMove(string Direction);
-        
-        void Search(List<Mob> Mobs, IPerson Player, int x, int y);
+        void Move(IPerson PersonToMove);
+
+        void Search(IPerson Target);
         void Rotate(string SightDirection);
     }
 }

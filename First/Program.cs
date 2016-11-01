@@ -70,14 +70,6 @@ namespace First
             BattleLogic.ShowMap();
             #endregion
 
-            //
-            Dictionary<ConsoleKey, Position> dir = new Dictionary<ConsoleKey, Position>
-        {
-            {ConsoleKey.UpArrow, Player.ClosePoints.Up},
-            {ConsoleKey.DownArrow, Player.ClosePoints.Down},
-            {ConsoleKey.LeftArrow, Player.ClosePoints.Left},
-            {ConsoleKey.RightArrow, Player.ClosePoints.Right},
-        };
 
             while ((Player.Health > 0) && (Mobs[0] != null))
             {
@@ -85,42 +77,25 @@ namespace First
                 #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
                 string tempAction = Console.ReadLine();
+
                 if (tempAction == "M")
                 {
-                    foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-                    {
                         Console.WriteLine("Нажми стрелку");
                         Console.ReadKey();
-                        if (Console.ReadKey().Key == keyValue.Key)
-                        {
-
-                            Player.Position = keyValue.Value;
-                        }
-                        else 
-                        {
-                            Console.WriteLine("Не то жмешь");
-                        }
+                        Player.Move(Player);
+                        BattleLogic.PlayerPositioning(Player, Player.Position.x, Player.Position.y);
                     }
-                    //Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    //if (Console.ReadKey().Key == ConsoleKey.UpArrow) Player.MovePlayer("N");
-                    //else if (Console.ReadKey().Key == ConsoleKey.DownArrow) Player.MovePlayer("S");
-                    //else if (Console.ReadKey().Key == ConsoleKey.LeftArrow) Player.MovePlayer("W");
-                    //else if (Console.ReadKey().Key == ConsoleKey.RightArrow) Player.MovePlayer("E");
-                    //else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
-                }
+
                 if (tempAction == "A")
                 {
                     foreach (Mob SelectesMob in Mobs)
-                    {
-                        if (((SelectesMob.Position.x == (Player.Position.x - 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "E")) |
-                    ((SelectesMob.Position.x == (Player.Position.x + 1)) && (SelectesMob.Position.y == Player.Position.y) && (SelectesMob.SightDirection == "W")) |
-                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y - 1)) && (SelectesMob.SightDirection == "S")) |
-                    ((SelectesMob.Position.x == Player.Position.x) && (SelectesMob.Position.y == (Player.Position.y + 1)) && (SelectesMob.SightDirection == "N")))
-                        {
+                    { 
                             Player.Attack(SelectesMob);
-                        }
                     }
-                    if (tempAction == "R")
+                }
+
+                    //ToDo Переписать условия для поворота
+                else if (tempAction == "R")
                     {
                         Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
                         bool tempCheck = false;
@@ -149,13 +124,15 @@ namespace First
                             else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
 
 
-                        }
-                    }
+                     }
                 }
-                else if (tempAction == "S")
-                {   
-                   
 
+                else if (tempAction == "S")
+                {
+                    foreach (Mob SelectesMob in Mobs)
+                    {
+                        Player.Search(SelectesMob);
+                    }
                 }
 
                 Console.Read();
