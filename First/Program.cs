@@ -6,10 +6,10 @@ using System.Threading;
 
 namespace First
 {
-    class Program
+    public class Program
     {
         //Карта
-        public static string[,] Map = new string[10,10];
+        public static string[][] Map;
 
         //Количество мобов, задается вначале игры
         public static int MobCount;
@@ -78,7 +78,7 @@ namespace First
 
             #region Стартовая генерация игрока, мобов и карты
             //Создание карты и заполнение ее пустыми значениями
-            BattleLogic.CreateMap();
+            Map = BattleLogic.CreateMap(10,10);
 
             //Создание игрока
             IPerson Player = new Player("Li", 1000, 10, "N");
@@ -123,7 +123,7 @@ namespace First
                     #region Do u like it?
                     else if (tempAction == "A")
                     {
-                        if (Map[BattleLogic.SightPoint(Player)[0], BattleLogic.SightPoint(Player)[1]] == "M")
+                        if (Map[BattleLogic.SightPoint(Player)[0]][BattleLogic.SightPoint(Player)[1]] == "M")
                         {
                             foreach (Mob PoorMob in Mobs)
                             {

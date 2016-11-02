@@ -1,0 +1,7 @@
+D:\Git\GitLearning\First\First\First.Tests\bin\Debug\First.Tests.dll
+D:\Git\GitLearning\First\First\First.Tests\bin\Debug\First.Tests.pdb
+D:\Git\GitLearning\First\First\First.Tests\bin\Debug\First.exe
+D:\Git\GitLearning\First\First\First.Tests\bin\Debug\First.pdb
+D:\Git\GitLearning\First\First\First.Tests\obj\Debug\First.Tests.csprojResolveAssemblyReference.cache
+D:\Git\GitLearning\First\First\First.Tests\obj\Debug\First.Tests.dll
+D:\Git\GitLearning\First\First\First.Tests\obj\Debug\First.Tests.pdb

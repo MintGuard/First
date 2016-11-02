@@ -5,7 +5,7 @@ using System.Text;
 
 namespace First
 {
-    class Player : Person
+    public class Player : Person
     {
         #region Конструкторы 
         public Player() //Написать конструктор с заданием POwer и Health

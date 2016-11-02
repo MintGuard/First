@@ -5,7 +5,7 @@ using System.Text;
 
 namespace First
 {
-    interface IPerson
+    public interface IPerson
     {
         string PersonType { get ; set; }
         string Name { get; set; }

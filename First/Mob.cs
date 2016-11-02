@@ -5,7 +5,7 @@ using System.Text;
 
 namespace First
 {
-    class Mob : Person
+    public class Mob : Person
     {
 
         #region Конструкторы

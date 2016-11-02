@@ -5,7 +5,7 @@ using System.Text;
 
 namespace First
 {
-    class Position
+    public class Position
     {
         public int x;
         public int y;

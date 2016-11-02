@@ -9,7 +9,7 @@ namespace First
     /// <summary>
     /// Класс мусорка
     /// </summary>
-    class BattleLogic
+    public class BattleLogic
     {
         public static int[] RandomCoordinates(int Count)
         {
@@ -26,18 +26,21 @@ namespace First
         {
             Player.Position.x = x;
             Player.Position.y = y;
-            Program.Map[Player.Position.x, Player.Position.y] = "P";
+            Program.Map[Player.Position.x][Player.Position.y] = "P";
         }
 
-        public static void CreateMap()
+        public static string[][] CreateMap(int width, int length)
         {
-            for (int i = 0; i < 10; i++)
+            string[][] result = new string[width][];
+            for (int i = 0; i < width; i++)
             {
-                for (int j = 0; j < 10; j++)
+                result[i] = new string[length];
+                for (int j = 0; j < length; j++)
                 {
-                    Program.Map[i, j] = "N";
+                    result[i][j] = "N";
                 }
             }
+            return result;
         }
 
         public static void MobGenerator()
@@ -45,7 +48,7 @@ namespace First
             for (int i = 0; i < Program.MobCount; i++)
             {
                 Program.coordinates = BattleLogic.RandomCoordinates(10);
-                while (Program.Map[Program.coordinates[0], Program.coordinates[1]] != "N")
+                while (Program.Map[Program.coordinates[0]][Program.coordinates[1]] != "N")
                 {
                     Program.coordinates = BattleLogic.RandomCoordinates(10);
                 }
@@ -53,7 +56,7 @@ namespace First
                 Program.Mobs[i].Position = new Position();
                 Program.Mobs[i].Position.x = Program.coordinates[0];
                 Program.Mobs[i].Position.y = Program.coordinates[1];
-                Program.Map[Program.coordinates[0], Program.coordinates[1]] = "M";
+                Program.Map[Program.coordinates[0]][Program.coordinates[1]] = "M";
             }
         }
 
@@ -63,7 +66,7 @@ namespace First
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    Console.Write(" | " + Program.Map[i, j] + " | ");
+                    Console.Write(" | " + Program.Map[i][j] + " | ");
                 }
                 Console.WriteLine("\n");
             }
