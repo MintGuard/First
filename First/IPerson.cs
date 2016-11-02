@@ -12,7 +12,7 @@ namespace First
         /// </summary>
         string PersonType { get ; set; }
         string Name { get; set; }
-        string SightDirection { get; set; }
+        Position SightDirection { get; set; }
         Position Position { get; set; }
         PointsAround ClosePoints { get; set; }
         int Power { get; set; }
@@ -22,11 +22,9 @@ namespace First
         /// Методы, которые выполняют все персонажи
         /// </summary>
         /// <param name="Target"></param>
-        void Attack(IPerson Target);
-        //ToDo ПЕРЕСТАТЬ ТУПИТЬ! Исправить это убожество. Какие нахуй два абсолютно одинаковых метода?
+        void Attack(IPerson Target);  
         void Move(IPerson PersonToMove);
-
         void Search(IPerson Target);
-        void Rotate(string SightDirection);
+        void Rotate();
     }
 }

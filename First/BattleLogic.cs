@@ -94,16 +94,16 @@ namespace First
         /// <param name="Player"></param>
         /// <param name="Mobs"></param>
         public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
-        {   
+        {
             foreach (Mob SelectesMob in Mobs)
-            {   
+            {
                 #region Атака моба(если игрок рядом в любом случае)
-               bool tempCheck = false;
-                        if (!tempCheck)
-                        {
+                bool tempCheck = false;
+                if (!tempCheck)
+                {
                     SelectesMob.Attack(Player);
                     tempCheck = true;
-                        }
+                }
                 #endregion
                 else
                 {
@@ -141,58 +141,59 @@ namespace First
                         temp = Rndm.Next(3);
                         if (temp == 0)
                         {
-                            if (SelectesMob.SightDirection != "N")
-                            {
-                                SelectesMob.Rotate("N");
-                            }
-                            else
-                            {
-                                SelectesMob.Rotate("S");
-                            }
+                            //    if (SelectesMob.SightDirection != "N")
+                            //    {
+                            //        SelectesMob.Rotate("N");
+                            //    }
+                            //    else
+                            //    {
+                            //        SelectesMob.Rotate("S");
+                            //    }
+                            //}
+                            //else if (temp == 1)
+                            //{
+                            //    if (SelectesMob.SightDirection != "S")
+                            //    {
+                            //        SelectesMob.Rotate("S");
+                            //    }
+                            //    else
+                            //    {
+                            //        SelectesMob.Rotate("N");
+                            //    }
+                            //}
+                            //else if (temp == 2)
+                            //{
+                            //    if (SelectesMob.SightDirection != "W")
+                            //    {
+                            //        SelectesMob.Rotate("W");
+                            //    }
+                            //    else
+                            //    {
+                            //        SelectesMob.Rotate("E");
+                            //    }
+                            //}
+                            //else if (temp == 3)
+                            //{
+                            //    if (SelectesMob.SightDirection != "E")
+                            //    {
+                            //        SelectesMob.Rotate("E");
+                            //    }
+                            //    else
+                            //    {
+                            //        SelectesMob.Rotate("W");
+                            //    }
+                            //}
                         }
-                        else if (temp == 1)
-                        {
-                            if (SelectesMob.SightDirection != "S")
-                            {
-                                SelectesMob.Rotate("S");
-                            }
-                            else
-                            {
-                                SelectesMob.Rotate("N");
-                            }
-                        }
-                        else if (temp == 2)
-                        {
-                            if (SelectesMob.SightDirection != "W")
-                            {
-                                SelectesMob.Rotate("W");
-                            }
-                            else
-                            {
-                                SelectesMob.Rotate("E");
-                            }
-                        }
-                        else if (temp == 3)
-                        {
-                            if (SelectesMob.SightDirection != "E")
-                            {
-                                SelectesMob.Rotate("E");
-                            }
-                            else
-                            {
-                                SelectesMob.Rotate("W");
-                            }
-                        }
-                    }
                     #endregion
-                    #region Поиск моба
-                    else if (Num == 2)
-                    {
-                        SelectesMob.Search(Player);
-                    }
-                    #endregion
-                    else { }
+                        #region Поиск моба
+                        else if (Num == 2)
+                        {
+                            SelectesMob.Search(Player);
+                        }
+                        #endregion
+                        else { }
 
+                    }
                 }
             }
         }

@@ -59,9 +59,10 @@ namespace First
             BattleLogic.CreateMap();
 
             //Создание игрока
-            IPerson Player = new Player("Li", 1000, 10, "N");
+            IPerson Player = new Player("Li", 1000, 10);
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
             Player.ClosePoints = new PointsAround(Player.Position);
+            Program.Map[Player.SightDirection.x, Player.SightDirection.y] = Program.Map[Player.ClosePoints.Up.x, Player.ClosePoints.Up.y];
 
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
@@ -80,52 +81,28 @@ namespace First
 
                 if (tempAction == "M")
                 {
-                        Console.WriteLine("Нажми стрелку");
-                        Console.ReadKey();
-                        Player.Move(Player);
-                        BattleLogic.PlayerPositioning(Player, Player.Position.x, Player.Position.y);
-                    }
+                    Console.WriteLine("Нажми стрелку");
+                    Console.ReadKey();
+                    Player.Move(Player);
+                    BattleLogic.PlayerPositioning(Player, Player.Position.x, Player.Position.y);
+                }
 
                 if (tempAction == "A")
                 {
                     foreach (Mob SelectesMob in Mobs)
-                    { 
-                            Player.Attack(SelectesMob);
+                    {
+                        Player.Attack(SelectesMob);
                     }
                 }
 
                     //ToDo Переписать условия для поворота
                 else if (tempAction == "R")
-                    {
-                        Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                        bool tempCheck = false;
-                        while (!tempCheck)
-                        {
-                            if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (Player.SightDirection != "N"))
-                            {
-                                Player.Rotate("N");
-                                tempCheck = true;
-                            }
-                            else if ((Console.ReadKey().Key == ConsoleKey.DownArrow) && (Player.SightDirection != "S"))
-                            {
-                                Player.Rotate("S");
-                                tempCheck = true;
-                            }
-                            else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow) && (Player.SightDirection != "W"))
-                            {
-                                Player.Rotate("W");
-                                tempCheck = true;
-                            }
-                            else if ((Console.ReadKey().Key == ConsoleKey.RightArrow) && (Player.SightDirection != "E"))
-                            {
-                                Player.Rotate("E");
-                                tempCheck = true;
-                            }
-                            else Console.WriteLine("Еблан! Я ж сказал только стрелки(!)");
-
-
-                     }
+                {
+                    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                    Console.ReadLine();  
+                    Player.Rotate();
                 }
+
 
                 else if (tempAction == "S")
                 {
@@ -141,11 +118,14 @@ namespace First
                 //ToDo Переписать вызов действий мобов
                 if (Console.ReadKey().Key == ConsoleKey.Enter)
                 {
-                    Del d = BattleLogic.MobAction;
-                    BattleLogic.ShowMap();
+                    //{
+                    //    Del d = BattleLogic.MobAction;
+                    //    BattleLogic.ShowMap();
 
-                };
-                //
+                    //};
+                    //
+
+                }
             }
         }
     }
