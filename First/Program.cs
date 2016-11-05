@@ -59,11 +59,10 @@ namespace First
             BattleLogic.CreateMap();
 
             //Создание игрока
-            IPerson Player = new Player("Li", 1000, 10);
+            IPerson Player = new Player("Li", 1000, 10, "N");
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
             Player.ClosePoints = new PointsAround(Player.Position);
-            Program.Map[Player.SightDirection.x, Player.SightDirection.y] = Program.Map[Player.ClosePoints.Up.x, Player.ClosePoints.Up.y];
-
+            
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
 

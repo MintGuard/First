@@ -12,9 +12,9 @@ namespace First
         /// </summary>
         string PersonType { get ; set; }
         string Name { get; set; }
-        Position SightDirection { get; set; }
+        string SightDirection { get; set; }
         Position Position { get; set; }
-        PointsAround ClosePoints { get; set; }
+        Direction Directions { get; set; }
         int Power { get; set; }
         int Health { get; set; }
 
@@ -25,6 +25,6 @@ namespace First
         void Attack(IPerson Target);  
         void Move(IPerson PersonToMove);
         void Search(IPerson Target);
-        void Rotate();
+        void Rotate(string RotateDirection);
     }
 }
