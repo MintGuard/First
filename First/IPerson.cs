@@ -23,8 +23,8 @@ namespace First
         /// </summary>
         /// <param name="Target"></param>
         void Attack(IPerson Target);  
-        void Move(IPerson PersonToMove);
+        void Move(IZoglushka MoveDirection);
         void Search(IPerson Target);
-        void Rotate(string RotateDirection);
+        void Rotate(IZoglushka RotateDirection);
     }
 }

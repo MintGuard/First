@@ -18,20 +18,21 @@ namespace First
 
         public Person()
         {
-
-        }
-
-        public Person(ConsoleKey Key, Position ClosePoints, IPerson PersonToMove)
-        {
             this.Directions = new Direction(Position);
-            Dictionary<ConsoleKey, IZoglushka> dir = new Dictionary<ConsoleKey, IZoglushka>
-            {
-                {ConsoleKey.UpArrow, this.Directions.Up},
-                {ConsoleKey.DownArrow, this.Directions.Down},
-                {ConsoleKey.LeftArrow, this.Directions.Left},
-                {ConsoleKey.RightArrow, this.Directions.Right}
-            };
         }
+
+        //public Person(ConsoleKey Key, IPerson PersonToMove)
+        //{
+        //    this.Directions = new Direction(Position);
+        //    Dictionary<ConsoleKey, IZoglushka> dir = new Dictionary<ConsoleKey, IZoglushka>
+        //    {
+        //        {ConsoleKey.UpArrow, this.Directions.Up},
+        //        {ConsoleKey.DownArrow, this.Directions.Down},
+        //        {ConsoleKey.LeftArrow, this.Directions.Left},
+        //        {ConsoleKey.RightArrow, this.Directions.Right}
+
+        //    };
+        //}
 
         public void Attack(IPerson target)
         {
@@ -44,23 +45,16 @@ namespace First
             }
         }
 
-        public void Move(IPerson PersonToMove)
+        public void Move(IZoglushka MoveDirection)
         {
-            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-            {
-                //Console.WriteLine("Нажми стрелку");
-                //Console.ReadKey();
-                if ((Console.ReadKey().Key == keyValue.Key) && (Program.Map[keyValue.Value.x, keyValue.Value.y] == "N"))
-                {
-                    Program.Map[this.Position.x, this.Position.y] = "N";
-                    this.Position = keyValue.Value;
-                }
+            //Console.WriteLine("Нажми стрелку");
+            //Console.ReadKey();
+            this.Position = MoveDirection.Around;
                 //else
                 //{
                 //    Console.WriteLine("Не то жмешь");
                 //}
-
-            }
+    
         }
 
         
@@ -75,28 +69,29 @@ namespace First
             }
         }
 
-        public bool Rotate(string RotateDirection)
+        public void Rotate(IZoglushka RotateDirection)
         {
-            if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (this.SightDirection != "N"))
-            {
-                this.SightDirection = "N";
-                return true;
-            }
-            else if ((Console.ReadKey().Key == ConsoleKey.DownArrow) && (this.SightDirection != "S"))
-            {
-                this.SightDirection = "S";
-                return true;
-            }
-            else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow) && (this.SightDirection != "W"))
-            {
-                this.SightDirection = "W";
-                return true;
-            }
-            else if ((Console.ReadKey().Key == ConsoleKey.RightArrow) && (this.SightDirection != "E"))
-            {
-                this.SightDirection = "E";
-                return true;
-            } 
+            this.SightDirection = RotateDirection.Sight;
+            //if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (this.SightDirection != "N"))
+            //{
+            //    this.SightDirection = "N";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.DownArrow) && (this.SightDirection != "S"))
+            //{
+            //    this.SightDirection = "S";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow) && (this.SightDirection != "W"))
+            //{
+            //    this.SightDirection = "W";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.RightArrow) && (this.SightDirection != "E"))
+            //{
+            //    this.SightDirection = "E";
+            //    return true;
+            //} 
         }
         //public void Rotate()
         //{

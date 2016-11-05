@@ -22,6 +22,7 @@ namespace First
         public static List<Mob> Mobs = new List<Mob>();
         delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
         delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hi Masha. I'm your first test game which you will analyze and upgrade. Do your best!");
@@ -61,7 +62,7 @@ namespace First
             //Создание игрока
             IPerson Player = new Player("Li", 1000, 10, "N");
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
-            Player.ClosePoints = new PointsAround(Player.Position);
+            //Player.ClosePoints = new PointsAround(Player.Position);
             
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
@@ -82,8 +83,10 @@ namespace First
                 {
                     Console.WriteLine("Нажми стрелку");
                     Console.ReadKey();
-                    Player.Move(Player);
-                    BattleLogic.PlayerPositioning(Player, Player.Position.x, Player.Position.y);
+                    if ()
+                    {
+                        Player.Move(MoveDirection);
+                    }      
                 }
 
                 if (tempAction == "A")
@@ -99,7 +102,7 @@ namespace First
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
                     Console.ReadLine();  
-                    Player.Rotate();
+                    Player.Rotate(RotateDirection);
                 }
 
 
