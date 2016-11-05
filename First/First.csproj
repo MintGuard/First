@@ -42,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleLogic.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Mob.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="IPerson.cs" />
-    <Compile Include="PointsAround.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
