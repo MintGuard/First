@@ -9,29 +9,30 @@ namespace First
     {
         public string PersonType { get; set; }
         public string Name { get; set; }
-        public Position SightDirection { get; set; }
+        public string SightDirection { get; set; }
         public Position Position { get; set; }
-        public PointsAround ClosePoints { get; set; }
+        public Direction Directions { get; set; }
         public int Power { get; set; }
         public int Health { get; set; }
-        public Dictionary<ConsoleKey, Position> dir;
+        public Dictionary<ConsoleKey, IZoglushka> dir;
 
         public Person()
         {
-
+            this.Directions = new Direction(Position);
         }
 
-        public Person(ConsoleKey Key, Position ClosePoints, IPerson PersonToMove)
-        {
-            this.ClosePoints = new PointsAround(Position);
-            Dictionary<ConsoleKey, Position> dir = new Dictionary<ConsoleKey, Position>
-            {
-                {ConsoleKey.UpArrow, this.ClosePoints.Up},
-                {ConsoleKey.DownArrow, this.ClosePoints.Down},
-                {ConsoleKey.LeftArrow, this.ClosePoints.Left},
-                {ConsoleKey.RightArrow, this.ClosePoints.Right},
-            };
-        }
+        //public Person(ConsoleKey Key, IPerson PersonToMove)
+        //{
+        //    this.Directions = new Direction(Position);
+        //    Dictionary<ConsoleKey, IZoglushka> dir = new Dictionary<ConsoleKey, IZoglushka>
+        //    {
+        //        {ConsoleKey.UpArrow, this.Directions.Up},
+        //        {ConsoleKey.DownArrow, this.Directions.Down},
+        //        {ConsoleKey.LeftArrow, this.Directions.Left},
+        //        {ConsoleKey.RightArrow, this.Directions.Right}
+
+        //    };
+        //}
 
         public void Attack(IPerson target)
         {
@@ -44,26 +45,19 @@ namespace First
             }
         }
 
-        public void Move(IPerson PersonToMove)
+        public void Move(IZoglushka MoveDirection)
         {
-            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-            {
-                //Console.WriteLine("Нажми стрелку");
-                //Console.ReadKey();
-                if ((Console.ReadKey().Key == keyValue.Key) && (Program.Map[keyValue.Value.x, keyValue.Value.y] == "N"))
-                {
-                    Program.Map[this.Position.x, this.Position.y] = "N";
-                    this.Position = keyValue.Value;
-                }
+            //Console.WriteLine("Нажми стрелку");
+            //Console.ReadKey();
+            this.Position = MoveDirection.Around;
                 //else
                 //{
                 //    Console.WriteLine("Не то жмешь");
                 //}
-
-            }
+    
         }
 
-
+        
         public virtual void Search(IPerson Target)
         {
             foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
@@ -75,21 +69,41 @@ namespace First
             }
         }
 
-        //public void Rotate(string RotateDirection)
-        //{
-        //    this.SightDirection = RotateDirection;
-        //}
-        public void Rotate()
+        public void Rotate(IZoglushka RotateDirection)
         {
-            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-            {
-                //Console.WriteLine("Нажми стрелку");
-                //Console.ReadKey();
-                if ((Console.ReadKey().Key == keyValue.Key) && (Program.Map[keyValue.Value.x, keyValue.Value.y] != Program.Map[this.SightDirection.x, this.SightDirection.y]))
-                {
-                    this.SightDirection = keyValue.Value;
-                }
-            }
+            this.SightDirection = RotateDirection.Sight;
+            //if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (this.SightDirection != "N"))
+            //{
+            //    this.SightDirection = "N";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.DownArrow) && (this.SightDirection != "S"))
+            //{
+            //    this.SightDirection = "S";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.LeftArrow) && (this.SightDirection != "W"))
+            //{
+            //    this.SightDirection = "W";
+            //    return true;
+            //}
+            //else if ((Console.ReadKey().Key == ConsoleKey.RightArrow) && (this.SightDirection != "E"))
+            //{
+            //    this.SightDirection = "E";
+            //    return true;
+            //} 
         }
+        //public void Rotate()
+        //{
+        //    foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
+        //    {
+        //        //Console.WriteLine("Нажми стрелку");
+        //        //Console.ReadKey();
+        //        if ((Console.ReadKey().Key == keyValue.Key) && (Program.Map[keyValue.Value.x, keyValue.Value.y] != Program.Map[this.SightDirection.x, this.SightDirection.y]))
+        //        {
+        //            this.SightDirection = keyValue.Value;
+        //        }
+        //    }
+        //}
     }
 }
