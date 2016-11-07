@@ -36,13 +36,13 @@ namespace First
 
         public void Attack(IPerson target)
         {
-            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-            {
-                if (Program.Map[target.Position.x, target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
-                {
+            //foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
+            //{
+            //    if (Program.Map[target.Position.x, target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
+            //    {
                     target.Health -= this.Power;
-                }
-            }
+            //    }
+            //}
         }
 
         public void Move(IZoglushka MoveDirection)
@@ -60,13 +60,13 @@ namespace First
         
         public virtual void Search(IPerson Target)
         {
-            foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
-            {
-                if (Program.Map[Target.Position.x, Target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
-                {
+            //foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
+            //{
+            //    if (Program.Map[Target.Position.x, Target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
+            //    {
                     Console.WriteLine(Target.Position);
-                }
-            }
+            //    }
+            //}
         }
 
         public void Rotate(IZoglushka RotateDirection)

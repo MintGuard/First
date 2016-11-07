@@ -62,6 +62,7 @@ namespace First
             //Создание игрока
             IPerson Player = new Player("Li", 1000, 10, "N");
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
+            Player.Directions = new Direction(Player.Position);
             //Player.ClosePoints = new PointsAround(Player.Position);
             
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
@@ -83,9 +84,10 @@ namespace First
                 {
                     Console.WriteLine("Нажми стрелку");
                     Console.ReadKey();
-                    if ()
+                    if ((Console.ReadKey().Key == Player.Directions.Up.Input) && 
+                        (Program.Map[Player.Directions.Up.Around.x, Player.Directions.Up.Around.y] == "N"))
                     {
-                        Player.Move(MoveDirection);
+                        Player.Move(Player.Directions.Up);
                     }      
                 }
 

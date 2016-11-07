@@ -15,16 +15,17 @@ namespace First
 
         public Mob(string name)
         {
-            new Mob(name, 30, 9);
+            new Mob(name, 30, 9, "N");
         }
 
-        public Mob(string name, int hp, int power)
+        public Mob(string name, int hp, int power, string sd)
         {
             this.PersonType = "Enemy";
             this.Name = name;
             this.Health = hp;
             this.Power = power;
-            this.SightDirection = new Position();
+            this.SightDirection = sd;
+            this.Directions = new Direction(Position);
 
             //ToDo Исправить, убрать инициализацию прямо в классе
             //this.ClosePoints = new PointsAround(Position);

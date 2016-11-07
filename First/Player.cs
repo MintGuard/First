@@ -26,6 +26,7 @@ namespace First
             this.Power = power;
             this.SightDirection = sd;
             this.Position = new Position();
+            this.Directions = new Direction(Position);
         }
         #endregion
 
