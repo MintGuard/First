@@ -20,8 +20,15 @@ namespace First
 
         //Список для хранения объектов мобов
         public static List<Mob> Mobs = new List<Mob>();
-        delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
-        delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
+        //delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
+        //delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
+
+        //Метод, возвращающий соседние точки
+        public List<Direction>ReturnPoints(Position currentPosition)
+            {
+            List<Direction>Points = new List<Direction>(); 
+            return Points;
+            }
 
         static void Main(string[] args)
         {
@@ -83,12 +90,13 @@ namespace First
                 if (tempAction == "M")
                 {
                     Console.WriteLine("Нажми стрелку");
-                    Console.ReadKey();
-                    if ((Console.ReadKey().Key == Player.Directions.Up.Input) && 
-                        (Program.Map[Player.Directions.Up.Around.x, Player.Directions.Up.Around.y] == "N"))
-                    {
-                        Player.Move(Player.Directions.Up);
-                    }      
+                    Console.ReadKey(); 
+                    Player.Position = Player.Directions.Around.ReturnPoints(Player.Position).Where(x => x.Input == Console.ReadKey().Key);
+                    //if ((Console.ReadKey().Key == IZoglushka.Input) && 
+                    //    (Player.Position != Program.Map[IZoglushka.Around.Up.x, izoglushka.Up.Around.y]))
+                    //{
+                    //    Player.Move(Direction.Around);
+                    //}      
                 }
 
                 if (tempAction == "A")
@@ -104,8 +112,10 @@ namespace First
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
                     Console.ReadLine();  
+                    if ((Console.ReadKey().Key == IZoglushka.Input) && (Player.SightDirection != IZoglushka.Sight))
+                    {
                     Player.Rotate(RotateDirection);
-                }
+                    }
 
 
                 else if (tempAction == "S")

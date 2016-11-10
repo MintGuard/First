@@ -50,7 +50,6 @@ namespace First
                 }
             }
         }
-
         /// <summary>
         /// Метод, генерирующий мобов
         /// </summary>
@@ -86,7 +85,7 @@ namespace First
                 Console.WriteLine("\n");
             }
         }
-
+ 
         /// <summary>
         /// Метод, вызывающий действия мобов
         /// </summary>
