@@ -22,8 +22,9 @@ namespace First
         /// Методы, которые выполняют все персонажи
         /// </summary>
         /// <param name="Target"></param>
+        List<IZoglushka> ReturnPoints(Position currentPoint);
         void Attack(IPerson Target);  
-        void Move(IZoglushka MoveDirection);
+        void Move();
         void Search(IPerson Target);
         void Rotate(IZoglushka RotateDirection);
     }

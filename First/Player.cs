@@ -30,6 +30,12 @@ namespace First
         }
         #endregion
 
+        public override void Move()
+        {
+            base.Move(); 
+            this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
+        }
+
         public override void Search(IPerson Mob)
         {
 

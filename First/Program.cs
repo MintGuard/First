@@ -23,12 +23,6 @@ namespace First
         //delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
         //delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
 
-        //Метод, возвращающий соседние точки
-        public List<Direction>ReturnPoints(Position currentPosition)
-            {
-            List<Direction>Points = new List<Direction>(); 
-            return Points;
-            }
 
         static void Main(string[] args)
         {
@@ -71,13 +65,14 @@ namespace First
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
             Player.Directions = new Direction(Player.Position);
             //Player.ClosePoints = new PointsAround(Player.Position);
-            
+
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
 
             //Отображение карты
             BattleLogic.ShowMap();
             #endregion
+
 
 
             while ((Player.Health > 0) && (Mobs[0] != null))
@@ -90,8 +85,9 @@ namespace First
                 if (tempAction == "M")
                 {
                     Console.WriteLine("Нажми стрелку");
-                    Console.ReadKey(); 
-                    Player.Position = Player.Directions.Around.ReturnPoints(Player.Position).Where(x => x.Input == Console.ReadKey().Key);
+                    Console.ReadKey();
+                    Player.Move();
+                    //Player.Position = Player.ReturnPoints(Player.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
                     //if ((Console.ReadKey().Key == IZoglushka.Input) && 
                     //    (Player.Position != Program.Map[IZoglushka.Around.Up.x, izoglushka.Up.Around.y]))
                     //{
@@ -111,36 +107,36 @@ namespace First
                 else if (tempAction == "R")
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    Console.ReadLine();  
-                    if ((Console.ReadKey().Key == IZoglushka.Input) && (Player.SightDirection != IZoglushka.Sight))
+                    Console.ReadLine();
+                    //if ((Console.ReadKey().Key == IZoglushka.Input) && (Player.SightDirection != IZoglushka.Sight))
+                    //{
+                    //    Player.Rotate(RotateDirection);
+                   }
+
+
+                    else if (tempAction == "S")
                     {
-                    Player.Rotate(RotateDirection);
+                        foreach (Mob SelectesMob in Mobs)
+                        {
+                            Player.Search(SelectesMob);
+                        }
                     }
 
-
-                else if (tempAction == "S")
-                {
-                    foreach (Mob SelectesMob in Mobs)
-                    {
-                        Player.Search(SelectesMob);
-                    }
-                }
-
-                Console.Read();
+                    Console.Read();
                 #endregion
 
-                //ToDo Переписать вызов действий мобов
-                if (Console.ReadKey().Key == ConsoleKey.Enter)
-                {
-                    //{
-                    //    Del d = BattleLogic.MobAction;
-                    //    BattleLogic.ShowMap();
+                    //ToDo Переписать вызов действий мобов
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                        //{
+                        //    Del d = BattleLogic.MobAction;
+                        //    BattleLogic.ShowMap();
 
-                    //};
-                    //
+                        //};
+                        //
 
+                    }
                 }
             }
         }
     }
-}

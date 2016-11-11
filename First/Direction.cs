@@ -118,8 +118,8 @@ public interface IZoglushka
     string Sight { get; set; }
     Position Around { get; set; }
 
-    static int Index { get; set; }
-    static ConsoleKey Input { get; set; }
+    int Index { get; set; }
+    ConsoleKey Input { get; set; }
 }
 
 

@@ -85,7 +85,7 @@ namespace First
                 Console.WriteLine("\n");
             }
         }
- 
+
         /// <summary>
         /// Метод, вызывающий действия мобов
         /// </summary>

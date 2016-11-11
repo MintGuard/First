@@ -32,6 +32,12 @@ namespace First
         }
         #endregion
         //ToDo Исправить косяки
+
+        public override void Move() 
+        {
+            base.Move();
+            this.Position = this.ReturnPoints(this.Position).Where(x => x.Index == new Random().Next(3)).FirstOrDefault().Around;
+        }
         public override void Search(IPerson Player)
         {
 

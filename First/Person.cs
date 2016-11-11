@@ -34,6 +34,19 @@ namespace First
         //    };
         //}
 
+        //Метод, возвращающий соседние точки
+        public List<IZoglushka> ReturnPoints(Position currentPoint)
+        {
+            Direction dir = new Direction(this.Position);
+            List<IZoglushka> Points = new List<IZoglushka>();
+            Points.Add(dir.Up);
+            Points.Add(dir.Down);
+            Points.Add(dir.Left);
+            Points.Add(dir.Right);
+
+            return Points;
+        }
+
         public void Attack(IPerson target)
         {
             //foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
@@ -45,11 +58,11 @@ namespace First
             //}
         }
 
-        public void Move(IZoglushka MoveDirection)
+        public virtual void Move()
         {
             //Console.WriteLine("Нажми стрелку");
             //Console.ReadKey();
-            this.Position = MoveDirection.Around;
+            //this.Position = MoveDirection.Around;
                 //else
                 //{
                 //    Console.WriteLine("Не то жмешь");
