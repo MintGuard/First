@@ -25,7 +25,7 @@ namespace First
         List<IZoglushka> ReturnPoints(Position currentPoint);
         void Attack(IPerson Target);  
         void Move();
-        void Search(IPerson Target);
-        void Rotate(IZoglushka RotateDirection);
+        void Search();
+        void Rotate();
     }
 }

@@ -71,20 +71,19 @@ namespace First
         }
 
         
-        public virtual void Search(IPerson Target)
+        public virtual void Search()
         {
             //foreach (KeyValuePair<ConsoleKey, Position> keyValue in dir)
             //{
             //    if (Program.Map[Target.Position.x, Target.Position.y] == Program.Map[keyValue.Value.x, keyValue.Value.y])
             //    {
-                    Console.WriteLine(Target.Position);
+                    //Console.WriteLine(Target.Position);
             //    }
             //}
         }
 
-        public void Rotate(IZoglushka RotateDirection)
+        public virtual void Rotate()
         {
-            this.SightDirection = RotateDirection.Sight;
             //if ((Console.ReadKey().Key == ConsoleKey.UpArrow) && (this.SightDirection != "N"))
             //{
             //    this.SightDirection = "N";

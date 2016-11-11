@@ -108,6 +108,7 @@ namespace First
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
                     Console.ReadLine();
+                    Player.Rotate();
                     //if ((Console.ReadKey().Key == IZoglushka.Input) && (Player.SightDirection != IZoglushka.Sight))
                     //{
                     //    Player.Rotate(RotateDirection);
@@ -116,10 +117,7 @@ namespace First
 
                     else if (tempAction == "S")
                     {
-                        foreach (Mob SelectesMob in Mobs)
-                        {
-                            Player.Search(SelectesMob);
-                        }
+                        Player.Search();
                     }
 
                     Console.Read();

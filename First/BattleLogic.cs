@@ -24,6 +24,13 @@ namespace First
             return result;
         }
 
+        //Метод получения рандомного числа
+        public static int ActionRandomizer(int maxNumber)
+       {
+            Random Rnd = new Random();
+            return Rnd.Next(maxNumber);
+          }
+
         /// <summary>
         /// Метод, располагающий игрока на карте
         /// </summary>
@@ -135,12 +142,12 @@ namespace First
                     #endregion
                     #region Поворот моба
                     else if (Num == 1)
-                    {
-                        int temp;
-                        Random Rndm = new Random();
-                        temp = Rndm.Next(3);
-                        if (temp == 0)
-                        {
+                    {   SelectesMob.Rotate();
+                        //int temp;
+                        //Random Rndm = new Random();
+                        //temp = Rndm.Next(3);
+                        //if (temp == 0)
+                        //{
                             //    if (SelectesMob.SightDirection != "N")
                             //    {
                             //        SelectesMob.Rotate("N");

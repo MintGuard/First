@@ -38,9 +38,18 @@ namespace First
             base.Move();
             this.Position = this.ReturnPoints(this.Position).Where(x => x.Index == new Random().Next(3)).FirstOrDefault().Around;
         }
-        public override void Search(IPerson Player)
-        {
-
-        }
+        public override void Rotate()
+        {   
+            base.Rotate();
+            int ActionId = BattleLogic.ActionRandomizer(3);
+            if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight)
+            {
+                this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight;
+            }
+            else 
+            {
+                ActionId = BattleLogic.ActionRandomizer(3);
+            }
+            }
     }
 }

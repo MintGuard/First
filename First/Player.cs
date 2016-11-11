@@ -36,9 +36,14 @@ namespace First
             this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
         }
 
-        public override void Search(IPerson Mob)
+        public override void Rotate()
         {
-
+            base.Rotate();
+            if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight)
+            {
+                this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight;
+            }
+            else { Console.WriteLine("Нет такого направления"); };
         }
     }
 }
