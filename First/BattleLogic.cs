@@ -99,7 +99,7 @@ namespace First
         /// <param name="Num"></param>
         /// <param name="Player"></param>
         /// <param name="Mobs"></param>
-        public static void MobAction(int Num, IPerson Player, List<Mob> Mobs)
+        public static void MobAction(int ActionRnd, IPerson Player, List<Mob> Mobs)
         {
             foreach (Mob SelectesMob in Mobs)
             {
@@ -113,96 +113,27 @@ namespace First
                 #endregion
                 else
                 {
-                    Random ActionRnd = new Random();
-                    Num = ActionRnd.Next(2);
-                    #region Ходьба моба(недописанная)
-                    if (Num == 0)
+                    ActionRnd = ActionRandomizer(2);
+                    #region Ходьба моба
+                    if (ActionRnd == 0)
                     {
-                        
-                        //int temp;
-                        //Random Rndm = new Random();
-                        //temp = Rndm.Next(3);
-                        //if (temp == 0)
-                        //{
-                        //    SelectesMob.MobsMove("W");
-                        //}
-                        //else if (temp == 1)
-                        //{
-                        //    SelectesMob.MobsMove("E");
-                        //}
-                        //else if (temp == 2)
-                        //{
-                        //    SelectesMob.MobsMove("N");
-                        //}
-                        //else if (temp == 3)
-                        //{
-                        //    SelectesMob.MobsMove("S");
-                        //}
+                        SelectesMob.Move();
                     }
                     #endregion
                     #region Поворот моба
-                    else if (Num == 1)
-                    {   SelectesMob.Rotate();
-                        //int temp;
-                        //Random Rndm = new Random();
-                        //temp = Rndm.Next(3);
-                        //if (temp == 0)
-                        //{
-                            //    if (SelectesMob.SightDirection != "N")
-                            //    {
-                            //        SelectesMob.Rotate("N");
-                            //    }
-                            //    else
-                            //    {
-                            //        SelectesMob.Rotate("S");
-                            //    }
-                            //}
-                            //else if (temp == 1)
-                            //{
-                            //    if (SelectesMob.SightDirection != "S")
-                            //    {
-                            //        SelectesMob.Rotate("S");
-                            //    }
-                            //    else
-                            //    {
-                            //        SelectesMob.Rotate("N");
-                            //    }
-                            //}
-                            //else if (temp == 2)
-                            //{
-                            //    if (SelectesMob.SightDirection != "W")
-                            //    {
-                            //        SelectesMob.Rotate("W");
-                            //    }
-                            //    else
-                            //    {
-                            //        SelectesMob.Rotate("E");
-                            //    }
-                            //}
-                            //else if (temp == 3)
-                            //{
-                            //    if (SelectesMob.SightDirection != "E")
-                            //    {
-                            //        SelectesMob.Rotate("E");
-                            //    }
-                            //    else
-                            //    {
-                            //        SelectesMob.Rotate("W");
-                            //    }
-                            //}
-                        }
+                    else if (ActionRnd == 1)
+                    {   
+                        SelectesMob.Rotate();
+                    }
                     #endregion
                         #region Поиск моба
-                        else if (Num == 2)
-                        {
-                            SelectesMob.Search(Player);
-                        }
-                        #endregion
-                        else { }
-
+                    else
+                    {
+                        SelectesMob.Search();
+                    }
+                        #endregion 
                     }
                 }
             }
         }
     }
-}

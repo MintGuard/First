@@ -33,15 +33,22 @@ namespace First
         #endregion
         //ToDo Исправить косяки
 
+        int ActionId = BattleLogic.ActionRandomizer(3);
         public override void Move() 
         {
             base.Move();
-            this.Position = this.ReturnPoints(this.Position).Where(x => x.Index == new Random().Next(3)).FirstOrDefault().Around;
-        }
+            if (Program.Map[this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around.x, this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around.y] == "N")
+            {
+                this.Position = this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around;
+            }
+            else 
+            { 
+                ActionId = BattleLogic.ActionRandomizer(3); 
+            }
+            }
         public override void Rotate()
         {   
             base.Rotate();
-            int ActionId = BattleLogic.ActionRandomizer(3);
             if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight)
             {
                 this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight;

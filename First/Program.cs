@@ -86,39 +86,31 @@ namespace First
                 {
                     Console.WriteLine("Нажми стрелку");
                     Console.ReadKey();
-                    Player.Move();
-                    //Player.Position = Player.ReturnPoints(Player.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
-                    //if ((Console.ReadKey().Key == IZoglushka.Input) && 
-                    //    (Player.Position != Program.Map[IZoglushka.Around.Up.x, izoglushka.Up.Around.y]))
-                    //{
-                    //    Player.Move(Direction.Around);
-                    //}      
+                    Player.Move();  
                 }
 
-                if (tempAction == "A")
+                else if (tempAction == "A")
                 {
                     foreach (Mob SelectesMob in Mobs)
                     {
                         Player.Attack(SelectesMob);
                     }
                 }
-
-                    //ToDo Переписать условия для поворота
+ 
                 else if (tempAction == "R")
                 {
                     Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
                     Console.ReadLine();
-                    Player.Rotate();
-                    //if ((Console.ReadKey().Key == IZoglushka.Input) && (Player.SightDirection != IZoglushka.Sight))
-                    //{
-                    //    Player.Rotate(RotateDirection);
-                   }
+                    Player.Rotate(); 
+                }
 
 
-                    else if (tempAction == "S")
-                    {
-                        Player.Search();
-                    }
+                else if (tempAction == "S")
+                {
+                    Player.Search();
+                }
+
+                else { Console.WriteLine("Нет такого действия"); }
 
                     Console.Read();
                 #endregion
@@ -126,6 +118,8 @@ namespace First
                     //ToDo Переписать вызов действий мобов
                     if (Console.ReadKey().Key == ConsoleKey.Enter)
                     {
+                        BattleLogic.MobAction(2, Player, Mobs);
+                        BattleLogic.ShowMap();
                         //{
                         //    Del d = BattleLogic.MobAction;
                         //    BattleLogic.ShowMap();

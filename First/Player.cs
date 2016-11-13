@@ -32,9 +32,16 @@ namespace First
 
         public override void Move()
         {
-            base.Move(); 
-            this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
-        }
+            base.Move();
+            if (Program.Map[this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.x, this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.y] == "N")
+            {
+                this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
+            }
+            else 
+            { 
+                Console.WriteLine("Нельзя туда шагнуть");
+            }
+            }
 
         public override void Rotate()
         {
@@ -43,7 +50,15 @@ namespace First
             {
                 this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight;
             }
-            else { Console.WriteLine("Нет такого направления"); };
+            else 
+            { 
+                Console.WriteLine("Выбери другое направление"); 
+            }
         }
+
+        //public override void Search()
+        //{
+             
+        //}
     }
 }
