@@ -111,6 +111,12 @@ namespace First
                     SelectesMob.Attack(Player);
                     tempCheck = true;
                 }
+                //вместо x допиши длинную хуйню на проверку P
+                if (Program.Map[SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.x, SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.y] == "P")
+                {
+
+                }
+
                 #endregion
                 else
                 {
