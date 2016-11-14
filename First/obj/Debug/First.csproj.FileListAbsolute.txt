@@ -15,3 +15,5 @@ C:\Users\дом\Documents\GitHub\First\First\bin\Debug\First.exe
 C:\Users\дом\Documents\GitHub\First\First\bin\Debug\First.pdb
 D:\Git\GitLearning\First\First\First\obj\Debug\First.exe
 D:\Git\GitLearning\First\First\First\obj\Debug\First.pdb
+E:\Git\GitLearning\First\First\First\obj\Debug\First.exe
+E:\Git\GitLearning\First\First\First\obj\Debug\First.pdb

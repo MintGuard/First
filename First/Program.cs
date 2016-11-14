@@ -112,22 +112,22 @@ namespace First
 
                 else { Console.WriteLine("Нет такого действия"); }
 
-                    Console.Read();
+                Console.Read();
                 #endregion
 
-                    //ToDo Переписать вызов действий мобов
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        BattleLogic.MobAction(2, Player, Mobs);
-                        BattleLogic.ShowMap();
-                        //{
-                        //    Del d = BattleLogic.MobAction;
-                        //    BattleLogic.ShowMap();
+                //ToDo Переписать вызов действий мобов
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    BattleLogic.MobAction(2, Player, Mobs);
+                    BattleLogic.ShowMap();
+                    //{
+                    //    Del d = BattleLogic.MobAction;
+                    //    BattleLogic.ShowMap();
 
-                        //};
-                        //
+                    //};
+                    //
 
-                    }
+                }
                 }
             }
         }

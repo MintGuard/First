@@ -104,6 +104,7 @@ namespace First
             foreach (Mob SelectesMob in Mobs)
             {
                 #region Атака моба(если игрок рядом в любом случае)
+                //Написана хуйня
                 bool tempCheck = false;
                 if (!tempCheck)
                 {
