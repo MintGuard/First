@@ -3,9 +3,6 @@ First/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 First.v11.suo
 First/bin/Debug/First.exe
 First/obj/Debug/First.pdb
-Thumbs.db
-*.DS_Store
-*.empty
 # User-specific files
 *.suo
 *.user
@@ -19,12 +16,8 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
-
-# NuGet Packages
 *.nupkg
-# The packages folder can be ignored because of Package Restore
 **/packages/*
-# except build/, which is used as an MSBuild target.
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
