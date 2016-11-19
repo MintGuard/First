@@ -36,7 +36,6 @@ namespace First
         int ActionId = BattleLogic.ActionRandomizer(3);
         public override void Move() 
         {
-            base.Move();
             if (Program.Map[this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around.x, this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around.y] == "N")
             {
                 this.Position = this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Around;
@@ -48,7 +47,6 @@ namespace First
             }
         public override void Rotate()
         {   
-            base.Rotate();
             if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight)
             {
                 this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Index == ActionId).FirstOrDefault().Sight;

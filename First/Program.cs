@@ -80,39 +80,45 @@ namespace First
                 //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
                 #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
-                string tempAction = Console.ReadLine();
 
-                if (tempAction == "M")
-                {
-                    Console.WriteLine("Нажми стрелку");
-                    Console.ReadKey();
-                    Player.Move();  
-                }
+                
+                BattleLogic.CompletedAction += BattleLogic.PlayerAction;
+                BattleLogic.CompletedAction += BattleLogic.MobAction;
+                BattleLogic.CompletedAction += BattleLogic.ShowMap;                
+                
+                //string tempAction = Console.ReadLine();
 
-                else if (tempAction == "A")
-                {
-                    foreach (Mob SelectesMob in Mobs)
-                    {
-                        Player.Attack(SelectesMob);
-                    }
-                }
+                //if (tempAction == "M")
+                //{
+                //    Console.WriteLine("Нажми стрелку");
+                //    Console.ReadKey();
+                //    Player.Move();  
+                //}
+
+                //else if (tempAction == "A")
+                //{
+                //    foreach (Mob SelectesMob in Mobs)
+                //    {
+                //        Player.Attack(SelectesMob);
+                //    }
+                //}
  
-                else if (tempAction == "R")
-                {
-                    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                    Console.ReadLine();
-                    Player.Rotate(); 
-                }
+                //else if (tempAction == "R")
+                //{
+                //    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                //    Console.ReadLine();
+                //    Player.Rotate(); 
+                //}
 
 
-                else if (tempAction == "S")
-                {
-                    Player.Search();
-                }
+                //else if (tempAction == "S")
+                //{
+                //    Player.Search();
+                //}
 
-                else { Console.WriteLine("Нет такого действия"); }
+                //else { Console.WriteLine("Нет такого действия"); }
 
-                Console.Read();
+                //Console.Read();
                 #endregion
 
                 //ToDo Переписать вызов действий мобов

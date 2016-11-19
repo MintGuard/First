@@ -93,6 +93,9 @@ namespace First
             }
         }
 
+        public delegate void Acted(int ActionRnd, IPerson Player, List<Mob> Mobs);
+        public event Acted CompletedAction; 
+        
         /// <summary>
         /// Метод, вызывающий действия мобов
         /// </summary>
@@ -104,17 +107,10 @@ namespace First
             foreach (Mob SelectesMob in Mobs)
             {
                 #region Атака моба(если игрок рядом в любом случае)
-                //Написана хуйня
-                bool tempCheck = false;
-                if (!tempCheck)
-                {
-                    SelectesMob.Attack(Player);
-                    tempCheck = true;
-                }
                 //вместо x допиши длинную хуйню на проверку P
                 if (Program.Map[SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.x, SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.y] == "P")
                 {
-
+                    SelectesMob.Attack(Player);
                 }
 
                 #endregion
@@ -142,5 +138,42 @@ namespace First
                     }
                 }
             }
+        public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
+        {
+            string tempAction = Console.ReadLine();
+
+            if (tempAction == "M")
+            {
+                Console.WriteLine("Нажми стрелку");
+                Console.ReadKey();
+                Player.Move();
+            }
+
+            else if (tempAction == "A")
+            {
+                foreach (Mob SelectesMob in Mobs)
+                {
+                    Player.Attack(SelectesMob);
+                }
+            }
+
+            else if (tempAction == "R")
+            {
+                Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                Console.ReadLine();
+                Player.Rotate();
+            }
+
+
+            else if (tempAction == "S")
+            {
+                Player.Search();
+            }
+
+            else { Console.WriteLine("Нет такого действия"); }
+
+            Console.Read();
+            
+        }
         }
     }

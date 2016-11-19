@@ -7,7 +7,7 @@ namespace First
 {
     class Player : Person
     {
-        #region Конструкторы 
+        #region Конструкторы
         public Player() //Написать конструктор с заданием POwer и Health
         {
             new Player("NoName");
@@ -32,33 +32,31 @@ namespace First
 
         public override void Move()
         {
-            base.Move();
             if (Program.Map[this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.x, this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.y] == "N")
             {
                 this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
             }
-            else 
-            { 
+            else
+            {
                 Console.WriteLine("Нельзя туда шагнуть");
             }
-            }
+        }
 
         public override void Rotate()
         {
-            base.Rotate();
             if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight)
             {
                 this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight;
             }
-            else 
-            { 
-                Console.WriteLine("Выбери другое направление"); 
+            else
+            {
+                Console.WriteLine("Выбери другое направление");
             }
         }
 
-        //public override void Search()
-        //{
-             
-        //}
+        public override void Search()
+        {
+            
+    }
     }
 }
