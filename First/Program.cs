@@ -22,7 +22,8 @@ namespace First
         public static List<Mob> Mobs = new List<Mob>();
         //delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
         //delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
-
+        public delegate void Acted(int ActionRnd, IPerson Player, List<Mob> Mobs);
+        public event Acted CompletedAction; 
 
         static void Main(string[] args)
         {
@@ -80,11 +81,11 @@ namespace First
                 //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
                 #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
-
+                BattleLogic.PlayerAction(Player, Mobs, BattleLogic.MobAction, BattleLogic.ShowMap);
                 
-                BattleLogic.CompletedAction += BattleLogic.PlayerAction;
-                BattleLogic.CompletedAction += BattleLogic.MobAction;
-                BattleLogic.CompletedAction += BattleLogic.ShowMap;                
+                //CompletedAction += BattleLogic.PlayerAction;
+                //CompletedAction += BattleLogic.MobAction;
+                //CompletedAction += BattleLogic.ShowMap;                
                 
                 //string tempAction = Console.ReadLine();
 
@@ -122,10 +123,10 @@ namespace First
                 #endregion
 
                 //ToDo Переписать вызов действий мобов
-                if (Console.ReadKey().Key == ConsoleKey.Enter)
-                {
-                    BattleLogic.MobAction(2, Player, Mobs);
-                    BattleLogic.ShowMap();
+                //if (Console.ReadKey().Key == ConsoleKey.Enter)
+                //{
+                //    BattleLogic.MobAction(2, Player, Mobs);
+                //    BattleLogic.ShowMap();
                     //{
                     //    Del d = BattleLogic.MobAction;
                     //    BattleLogic.ShowMap();

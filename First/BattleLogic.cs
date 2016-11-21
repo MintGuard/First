@@ -93,8 +93,8 @@ namespace First
             }
         }
 
-        public delegate void Acted(int ActionRnd, IPerson Player, List<Mob> Mobs);
-        public event Acted CompletedAction; 
+        public delegate void DelMob(int ActionRnd, IPerson Player, List<Mob> Mobs);
+        public delegate void DelShow(); 
         
         /// <summary>
         /// Метод, вызывающий действия мобов
@@ -138,7 +138,7 @@ namespace First
                     }
                 }
             }
-        public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
+        public static void PlayerAction(IPerson Player, List<Mob> Mobs, DelMob CallMob, DelShow CallShow) 
         {
             string tempAction = Console.ReadLine();
 
@@ -173,7 +173,10 @@ namespace First
             else { Console.WriteLine("Нет такого действия"); }
 
             Console.Read();
-            
+            CallMob = MobAction;
+            CallShow = ShowMap;
+            CallMob.Invoke(2, Player, Mobs);
+            CallShow.Invoke();
         }
         }
     }
