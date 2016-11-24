@@ -93,21 +93,20 @@ namespace First
             }
         }
 
-        public delegate void DelMob(int ActionRnd, IPerson Player, List<Mob> Mobs);
-        public delegate void DelShow(); 
-        
+        public delegate void Acted(IPerson Player, List<Mob> Mobs);
+        public delegate void OnShowMap();
+        public event Acted OnSomeAction;
+
         /// <summary>
         /// Метод, вызывающий действия мобов
         /// </summary>
-        /// <param name="Num"></param>
         /// <param name="Player"></param>
         /// <param name="Mobs"></param>
-        public static void MobAction(int ActionRnd, IPerson Player, List<Mob> Mobs)
+        public static void MobAction(IPerson Player, List<Mob> Mobs)
         {
             foreach (Mob SelectesMob in Mobs)
             {
                 #region Атака моба(если игрок рядом в любом случае)
-                //вместо x допиши длинную хуйню на проверку P
                 if (Program.Map[SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.x, SelectesMob.ReturnPoints(SelectesMob.Position).Where(c => c.Sight.Equals(SelectesMob.SightDirection)).FirstOrDefault().Around.y] == "P")
                 {
                     SelectesMob.Attack(Player);
@@ -116,7 +115,7 @@ namespace First
                 #endregion
                 else
                 {
-                    ActionRnd = ActionRandomizer(2);
+                    int ActionRnd = ActionRandomizer(2);
                     #region Ходьба моба
                     if (ActionRnd == 0)
                     {
@@ -136,9 +135,16 @@ namespace First
                     }
                         #endregion 
                     }
+
                 }
             }
-        public static void PlayerAction(IPerson Player, List<Mob> Mobs, DelMob CallMob, DelShow CallShow) 
+
+        /// <summary>
+        /// Метод, вызывающий действие игрока
+        /// </summary>
+        /// <param name="Player"></param>
+        /// <param name="Mobs"></param>
+        public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
         {
             string tempAction = Console.ReadLine();
 
@@ -173,10 +179,12 @@ namespace First
             else { Console.WriteLine("Нет такого действия"); }
 
             Console.Read();
-            CallMob = MobAction;
-            CallShow = ShowMap;
-            CallMob.Invoke(2, Player, Mobs);
-            CallShow.Invoke();
-        }
+
+            //Запуск события
+            if (OnSomeAction != null)
+                {
+                    OnSomeAction();
+                } 
+            }
         }
     }

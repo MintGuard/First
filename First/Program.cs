@@ -20,10 +20,7 @@ namespace First
 
         //Список для хранения объектов мобов
         public static List<Mob> Mobs = new List<Mob>();
-        //delegate void Del(int Num, IPerson Player, List<Mob> Mobs);
-        //delegate void Del1(int x, int y, IPerson Player, List<Mob> Mobs);
-        public delegate void Acted(int ActionRnd, IPerson Player, List<Mob> Mobs);
-        public event Acted CompletedAction; 
+
 
         static void Main(string[] args)
         {
@@ -65,7 +62,6 @@ namespace First
             IPerson Player = new Player("Li", 1000, 10, "N");
             BattleLogic.PlayerPositioning(Player, x: 4, y: 4);
             Player.Directions = new Direction(Player.Position);
-            //Player.ClosePoints = new PointsAround(Player.Position);
 
             //Генерация мобов и расставление их на карте, параметры мобов по дефолту
             BattleLogic.MobGenerator();
@@ -81,61 +77,14 @@ namespace First
                 //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
                 #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
-                BattleLogic.PlayerAction(Player, Mobs, BattleLogic.MobAction, BattleLogic.ShowMap);
+
+                BattleLogic.OnSomeAction += new BattleLogic.Acted(BattleLogic.MobAction);
+                BattleLogic.OnSomeAction += new BattleLogic.OnShowMap(BattleLogic.ShowMap);
+
+                BattleLogic.PlayerAction(Player, Mobs);
                 
-                //CompletedAction += BattleLogic.PlayerAction;
-                //CompletedAction += BattleLogic.MobAction;
-                //CompletedAction += BattleLogic.ShowMap;                
-                
-                //string tempAction = Console.ReadLine();
-
-                //if (tempAction == "M")
-                //{
-                //    Console.WriteLine("Нажми стрелку");
-                //    Console.ReadKey();
-                //    Player.Move();  
-                //}
-
-                //else if (tempAction == "A")
-                //{
-                //    foreach (Mob SelectesMob in Mobs)
-                //    {
-                //        Player.Attack(SelectesMob);
-                //    }
-                //}
- 
-                //else if (tempAction == "R")
-                //{
-                //    Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                //    Console.ReadLine();
-                //    Player.Rotate(); 
-                //}
-
-
-                //else if (tempAction == "S")
-                //{
-                //    Player.Search();
-                //}
-
-                //else { Console.WriteLine("Нет такого действия"); }
-
-                //Console.Read();
                 #endregion
-
-                //ToDo Переписать вызов действий мобов
-                //if (Console.ReadKey().Key == ConsoleKey.Enter)
-                //{
-                //    BattleLogic.MobAction(2, Player, Mobs);
-                //    BattleLogic.ShowMap();
-                    //{
-                    //    Del d = BattleLogic.MobAction;
-                    //    BattleLogic.ShowMap();
-
-                    //};
-                    //
-
-                }
-                }
             }
         }
     }
+}
