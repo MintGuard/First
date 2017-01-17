@@ -93,9 +93,16 @@ namespace First
             }
         }
 
-        public delegate void Acted(IPerson Player, List<Mob> Mobs);
-        public delegate void OnShowMap();
-        public event Acted OnSomeAction;
+        //public delegate void Acted(IPerson Player, List<Mob> Mobs);
+        //public delegate void OnShowMap();
+        //public event Acted OnSomeAction;
+
+
+        public static void OnPlayerEndAction(object sender, PlayerEventArgs e)
+        {
+            MobAction((IPerson)sender, e.Mobs);
+            ShowMap();
+        }
 
         /// <summary>
         /// Метод, вызывающий действия мобов
@@ -144,47 +151,47 @@ namespace First
         /// </summary>
         /// <param name="Player"></param>
         /// <param name="Mobs"></param>
-        public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
-        {
-            string tempAction = Console.ReadLine();
+        //public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
+        //{
+        //    string tempAction = Console.ReadLine();
 
-            if (tempAction == "M")
-            {
-                Console.WriteLine("Нажми стрелку");
-                Console.ReadKey();
-                Player.Move();
-            }
+        //    if (tempAction == "M")
+        //    {
+        //        Console.WriteLine("Нажми стрелку");
+        //        Console.ReadKey();
+        //        Player.Move();
+        //    }
 
-            else if (tempAction == "A")
-            {
-                foreach (Mob SelectesMob in Mobs)
-                {
-                    Player.Attack(SelectesMob);
-                }
-            }
+        //    else if (tempAction == "A")
+        //    {
+        //        foreach (Mob SelectesMob in Mobs)
+        //        {
+        //            Player.Attack(SelectesMob);
+        //        }
+        //    }
 
-            else if (tempAction == "R")
-            {
-                Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                Console.ReadLine();
-                Player.Rotate();
-            }
+        //    else if (tempAction == "R")
+        //    {
+        //        Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+        //        Console.ReadLine();
+        //        Player.Rotate();
+        //    }
 
 
-            else if (tempAction == "S")
-            {
-                Player.Search();
-            }
+        //    else if (tempAction == "S")
+        //    {
+        //        Player.Search();
+        //    }
 
-            else { Console.WriteLine("Нет такого действия"); }
+        //    else { Console.WriteLine("Нет такого действия"); }
 
-            Console.Read();
+        //    Console.Read();
 
-            //Запуск события
-            if (OnSomeAction != null)
-                {
-                    OnSomeAction();
-                } 
-            }
+        //    //Запуск события
+        //    if (OnSomeAction != null)
+        //        {
+        //            OnSomeAction();
+        //        } 
+        //    }
         }
     }

@@ -47,6 +47,7 @@
     <Compile Include="Mob.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="IPerson.cs" />
+    <Compile Include="PlayerEventArgs.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

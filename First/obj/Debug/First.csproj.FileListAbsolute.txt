@@ -17,3 +17,6 @@ D:\Git\GitLearning\First\First\First\obj\Debug\First.exe
 D:\Git\GitLearning\First\First\First\obj\Debug\First.pdb
 E:\Git\GitLearning\First\First\First\obj\Debug\First.exe
 E:\Git\GitLearning\First\First\First\obj\Debug\First.pdb
+E:\Git\GitLearning\First\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
+E:\Git\GitLearning\First\First\First\bin\Debug\First.exe
+E:\Git\GitLearning\First\First\First\bin\Debug\First.pdb
