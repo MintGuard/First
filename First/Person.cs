@@ -19,7 +19,7 @@ public class Person : IPerson
 
     public Person()
     {
-        this.Directions = new Direction(Position);
+        
     }
 
 

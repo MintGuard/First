@@ -10,12 +10,12 @@ public class Direction
     public Left Left;
     public Right Right;
 
-    public Direction(Position currentPoint)
+    public Direction(Position point)
     {
-        Up = new Up(currentPoint);
-        Down = new Down(currentPoint);
-        Left = new Left(currentPoint);
-        Right = new Right(currentPoint);
+        Up = new Up(point);
+        Down = new Down(point);
+        Left = new Left(point);
+        Right = new Right(point);
     }
 
     public void Update (Position newPosition)

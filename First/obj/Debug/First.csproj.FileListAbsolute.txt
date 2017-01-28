@@ -20,3 +20,8 @@ E:\Git\GitLearning\First\First\First\obj\Debug\First.pdb
 E:\Git\GitLearning\First\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
 E:\Git\GitLearning\First\First\First\bin\Debug\First.exe
 E:\Git\GitLearning\First\First\First\bin\Debug\First.pdb
+C:\Users\Home\Documents\GitHub\First\First\obj\Debug\First.exe
+C:\Users\Home\Documents\GitHub\First\First\bin\Debug\First.exe
+C:\Users\Home\Documents\GitHub\First\First\bin\Debug\First.pdb
+C:\Users\Home\Documents\GitHub\First\First\obj\Debug\First.csprojResolveAssemblyReference.cache
+C:\Users\Home\Documents\GitHub\First\First\obj\Debug\First.pdb

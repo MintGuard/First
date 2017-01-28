@@ -16,6 +16,8 @@ public class Mob : Person
     public Mob(string name)
     {
         new Mob(name, 30, 9, "N");
+        this.Position = new Position();
+        this.Directions = new Direction(this.Position);
     }
 
     public Mob(string name, int hp, int power, string sd)
@@ -25,7 +27,6 @@ public class Mob : Person
         this.Health = hp;
         this.Power = power;
         this.SightDirection = sd;
-        this.Directions = new Direction(Position);
 
         //ToDo Исправить, убрать инициализацию прямо в классе
         //this.ClosePoints = new PointsAround(Position);
