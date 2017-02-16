@@ -77,7 +77,7 @@ namespace First
                 //ToDo Оптимизировать ввод команд игроком (убрать кучу условий)
                 #region Ввод команд игроком
                 Console.WriteLine("Введите M, чтобы шагать. Введите А, чтобы атаковать. Введите S, чтобы искать. Введите R, чтобы повернуть голову. Не вводите ничего иного. Ибо эксепшны еще не прописаны.");
-
+                
                 Player.OnSomeAction += BattleLogic.OnPlayerEndAction;
 
                 Player.PlayerAction(Mobs);

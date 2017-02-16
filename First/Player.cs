@@ -29,7 +29,6 @@ public class Player : Person
     }
     #endregion
     public delegate void Acted(object sender, PlayerEventArgs e);
-    public delegate void OnShowMap();
     public event Acted OnSomeAction;
 
     public override void Move()
@@ -65,7 +64,7 @@ public class Player : Person
     /// </summary>
     /// <param name="Player"></param>
     /// <param name="Mobs"></param>
-    public void PlayerAction(List<Mob> Mobs)
+    public override void PlayerAction(List<Mob> Mobs)
     {
         string tempAction = Console.ReadLine();
 

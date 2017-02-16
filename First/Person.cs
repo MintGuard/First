@@ -41,11 +41,11 @@ public class Person : IPerson
     public event Player.Acted OnSomeAction;
     #region Методы персонажей
 
-    public void PlayerAction(List<Mob> Mobs)
+
+    public virtual void PlayerAction(List<Mob> Mobs)
     {
 
     }
-
     public void Attack(IPerson target)
     {
             target.Health -= this.Power;
