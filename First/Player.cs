@@ -25,7 +25,8 @@ public class Player : Person
         this.Power = power;
         this.SightDirection = sd;
         this.Position = new Position();
-        this.Directions = new Direction(Position);
+        this.Directions = new Direction(this.Position);
+
     }
     #endregion
     public delegate void Acted(object sender, PlayerEventArgs e);
@@ -65,9 +66,10 @@ public class Player : Person
     /// </summary>
     /// <param name="Player"></param>
     /// <param name="Mobs"></param>
-    public void PlayerAction(List<Mob> Mobs)
+    public override void PlayerAction(List<Mob> Mobs)
     {
         string tempAction = Console.ReadLine();
+        Console.Read();
 
         if (tempAction == "M")
         {

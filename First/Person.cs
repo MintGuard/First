@@ -16,10 +16,9 @@ public class Person : IPerson
     public Dictionary<ConsoleKey, IZoglushka> dir;
 
 
-
     public Person()
     {
-        this.Directions = new Direction(Position);
+
     }
 
 
@@ -41,7 +40,7 @@ public class Person : IPerson
     public event Player.Acted OnSomeAction;
     #region Методы персонажей
 
-    public void PlayerAction(List<Mob> Mobs)
+    public virtual void PlayerAction(List<Mob> Mobs)
     {
 
     }

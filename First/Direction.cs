@@ -10,12 +10,13 @@ public class Direction
     public Left Left;
     public Right Right;
 
-    public Direction(Position currentPoint)
+    public Direction(Position point)
     {
-        Up = new Up(currentPoint);
-        Down = new Down(currentPoint);
-        Left = new Left(currentPoint);
-        Right = new Right(currentPoint);
+        Position Around = new Position();
+        Up = new Up(point);
+        Down = new Down(point);
+        Left = new Left(point);
+        Right = new Right(point);
     }
 
     public void Update (Position newPosition)
@@ -36,8 +37,9 @@ public class Up : IZoglushka
     public ConsoleKey Input { get; set; }
     public Up(Position point)
     {
+        Around = new Position();
         Around = point;
-        Around.y--;
+        Around.y = Around.y--;
         Sight = "N";
         Index = 0;
         Input = ConsoleKey.UpArrow;
@@ -57,8 +59,9 @@ public class Down : IZoglushka
     public ConsoleKey Input { get; set; }
     public Down(Position point)
     {
+        Around = new Position();
         Around = point;
-        Around.y++;
+        Around.y = Around.y++;
         Sight = "S";
         Index = 1;
         Input = ConsoleKey.DownArrow;
@@ -78,8 +81,9 @@ public class Left : IZoglushka
     public ConsoleKey Input { get; set; }
     public Left(Position point)
     {
+        Around = new Position();
         Around = point;
-        Around.x--;
+        Around.x = Around.x--;
         Sight = "W";
         Index = 2;
         Input = ConsoleKey.LeftArrow;
@@ -99,8 +103,9 @@ public class Right : IZoglushka
     public ConsoleKey Input { get; set; }
     public Right(Position point)
     {
+        Around = new Position();
         Around = point;
-        Around.x++;
+        Around.x = Around.x++;
         Sight = "E";
         Index = 3;
         Input = ConsoleKey.RightArrow;
