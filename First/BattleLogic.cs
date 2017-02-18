@@ -97,7 +97,6 @@ namespace First
         //public delegate void OnShowMap();
         //public event Acted OnSomeAction;
 
-
         public static void OnPlayerEndAction(object sender, PlayerEventArgs e)
         {
             MobAction((IPerson)sender, e.Mobs);
@@ -144,14 +143,14 @@ namespace First
                     }
 
                 }
-            }
+        }
 
         /// <summary>
         /// Метод, вызывающий действие игрока
         /// </summary>
         /// <param name="Player"></param>
         /// <param name="Mobs"></param>
-        //public static void PlayerAction(IPerson Player, List<Mob> Mobs) 
+        //public static void PlayerAction(IPerson Player, List<Mob> Mobs)
         //{
         //    string tempAction = Console.ReadLine();
 
@@ -189,9 +188,8 @@ namespace First
 
         //    //Запуск события
         //    if (OnSomeAction != null)
-        //        {
-        //            OnSomeAction();
-        //        } 
-        //    }
-        }
+        //{
+        //    OnSomeAction(Player, new PlayerEventArgs(Player, Mobs));
+        //}
+}
     }

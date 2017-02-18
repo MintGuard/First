@@ -30,7 +30,6 @@ public class Player : Person
     }
     #endregion
     public delegate void Acted(object sender, PlayerEventArgs e);
-    public delegate void OnShowMap();
     public event Acted OnSomeAction;
 
     public override void Move()
