@@ -6,13 +6,12 @@ using System.Text;
 
 public class Position
 {
-    public int x {get; set; } 
-    public int y {get; set; }
-    
-    public Position ()
-     {
-         x = 4;
-         y = 4;
-}
+    public int x { get; set; }
+    public int y { get; set; }
+
+    public Position()
+    {
+
+    }
 }
 

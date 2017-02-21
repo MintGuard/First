@@ -12,7 +12,6 @@ public class Direction
 
     public Direction(Position point)
     {
-        Position Around = new Position();
         Up = new Up(point);
         Down = new Down(point);
         Left = new Left(point);

@@ -39,8 +39,8 @@ namespace First
         /// <param name="y">Координата y</param>
         public static void PlayerPositioning(IPerson Player, int x, int y)
         {
-            Player.Position.x = x;
-            Player.Position.y = y;
+            Player.Position.x = 4;
+            Player.Position.y = 4;
             Program.Map[Player.Position.x, Player.Position.y] = "P";
         }
 

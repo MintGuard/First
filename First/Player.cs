@@ -67,40 +67,52 @@ public class Player : Person
     /// <param name="Mobs"></param>
     public override void PlayerAction(List<Mob> Mobs)
     {
-        string tempAction = Console.ReadLine();
-        Console.Read();
-
-        if (tempAction == "M")
+        try
         {
-            Console.WriteLine("Нажми стрелку");
-            Console.ReadKey();
-            this.Move();
-        }
-
-        else if (tempAction == "A")
-        {
-            foreach (Mob SelectesMob in Mobs)
+            List<string> ActList = new List<string> { "M", "A", "R", "S" };
+            string tempAction = Console.ReadLine();
+            Console.Read();
+            if (tempAction == "M")
             {
-                this.Attack(SelectesMob);
+                Console.WriteLine("Нажми стрелку");
+                Console.ReadKey();
+                this.Move();
+            }
+
+            else if (tempAction == "A")
+            {
+                foreach (Mob SelectesMob in Mobs)
+                {
+                    this.Attack(SelectesMob);
+                }
+            }
+
+            else if (tempAction == "R")
+            {
+                Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
+                Console.ReadLine();
+                this.Rotate();
+            }
+
+
+            else if (tempAction == "S")
+            {
+                this.Search();
+            }
+
+            else
+            {
+                foreach (string ActValue in ActList)
+                {
+                    if (tempAction != ActValue) throw new Exception("Нет такого действия");
+                }
             }
         }
-
-        else if (tempAction == "R")
+        catch (Exception ex)
         {
-            Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-            Console.ReadLine();
-            this.Rotate();
+            Console.WriteLine(ex.Message);
         }
-
-
-        else if (tempAction == "S")
-        {
-            this.Search();
-        }
-
-        else { Console.WriteLine("Нет такого действия"); }
-
-        Console.Read();
+       
         //Запуск события
         if (OnSomeAction != null)
         {
