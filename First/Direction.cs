@@ -5,17 +5,17 @@ using System.Text;
 
 public class Direction
 {
-    public Up Up;
-    public Down Down;
-    public Left Left;
-    public Right Right;
+    public PointAround Up;
+    public PointAround Down;
+    public PointAround Left;
+    public PointAround Right;
 
     public Direction(Position point)
     {
-        Up = new Up(point);
-        Down = new Down(point);
-        Left = new Left(point);
-        Right = new Right(point);
+        Up = new PointAround(point, "N", 0, ConsoleKey.UpArrow);
+        Down = new PointAround(point, "S", 1, ConsoleKey.DownArrow);
+        Left = new PointAround(point, "W", 2, ConsoleKey.LeftArrow);
+        Right = new PointAround(point, "E", 3, ConsoleKey.RightArrow);
     }
 
     public void Update (Position newPosition)
@@ -27,101 +27,55 @@ public class Direction
     }
 }
 
-public class Up : IZoglushka
+public class PointAround : IPointAround
 {
-    public Position chototam { get; set; }
     public string Sight { get; set; }
     public Position Around { get; set; }
     public int Index { get; set; }
     public ConsoleKey Input { get; set; }
-    public Up(Position point)
+
+    public PointAround(Position point, string sight, int index, ConsoleKey input)
     {
         Around = new Position();
         Around = point;
-        Around.y = Around.y--;
-        Sight = "N";
-        Index = 0;
-        Input = ConsoleKey.UpArrow;
+        Sight = sight;
+        Index = index;
+        Input = input;
+        RecalculatePosition(sight);
     }
+
     public void Update(Position point)
     {
         Around = point;
-        Around.y--;
+        RecalculatePosition(Sight);
     }
-}
-public class Down : IZoglushka
-{
-    public Position chototam { get; set; }
-    public string Sight { get; set; }
-    public Position Around { get; set; }
-    public int Index { get; set; }
-    public ConsoleKey Input { get; set; }
-    public Down(Position point)
+
+    private void RecalculatePosition(string sight)
     {
-        Around = new Position();
-        Around = point;
-        Around.y = Around.y++;
-        Sight = "S";
-        Index = 1;
-        Input = ConsoleKey.DownArrow;
-    }
-    public void Update(Position point)
-    {
-        Around = point;
-        Around.y++;
-    }
-}
-public class Left : IZoglushka
-{
-    public Position chototam { get; set; }
-    public string Sight { get; set; }
-    public Position Around { get; set; }
-    public int Index { get; set; }
-    public ConsoleKey Input { get; set; }
-    public Left(Position point)
-    {
-        Around = new Position();
-        Around = point;
-        Around.x = Around.x--;
-        Sight = "W";
-        Index = 2;
-        Input = ConsoleKey.LeftArrow;
-    }
-    public void Update(Position point)
-    {
-        Around = point;
-        Around.x--;
-    }
-}
-public class Right : IZoglushka
-{
-    public Position chototam { get; set; }
-    public string Sight { get; set; }
-    public Position Around { get; set; }
-    public int Index { get; set; }
-    public ConsoleKey Input { get; set; }
-    public Right(Position point)
-    {
-        Around = new Position();
-        Around = point;
-        Around.x = Around.x++;
-        Sight = "E";
-        Index = 3;
-        Input = ConsoleKey.RightArrow;
-    }
-    public void Update(Position point)
-    {
-        Around = point;
-        Around.x++;
+        switch (sight)
+        {
+            case "N":
+                Around.y--;
+                break;
+            case "S":
+                Around.y++;
+                break;
+            case "W":
+                Around.x--;
+                break;
+            case "E":
+                Around.x++;
+                break;
+            default:
+                throw new Exception("No sight direction");
+        }
     }
 }
 
-public interface IZoglushka
+public interface IPointAround
 {
-    Position chototam { get; set; }
     string Sight { get; set; }
     Position Around { get; set; }
-
     int Index { get; set; }
     ConsoleKey Input { get; set; }
 }

@@ -13,7 +13,7 @@ public class Person : IPerson
     public Direction Directions { get; set; }
     public int Power { get; set; }
     public int Health { get; set; }
-    public Dictionary<ConsoleKey, IZoglushka> dir;
+    public Dictionary<ConsoleKey, IPointAround> dir;
 
 
     public Person()
@@ -23,10 +23,10 @@ public class Person : IPerson
 
 
     //Метод, возвращающий соседние точки
-    public List<IZoglushka> ReturnPoints(Position currentPoint)
+    public List<IPointAround> ReturnPoints(Position currentPoint)
     {
         Direction dir = new Direction(this.Position);
-        List<IZoglushka> Points = new List<IZoglushka>();
+        List<IPointAround> Points = new List<IPointAround>();
         Points.Add(dir.Up);
         Points.Add(dir.Down);
         Points.Add(dir.Left);
@@ -55,13 +55,22 @@ public class Person : IPerson
     {
 
     }
- 
+
+    public virtual void Move(ConsoleKey Key)
+    {
+
+    }
+
     public virtual void Search()
     {
             
     }
 
     public virtual void Rotate()
+    {
+
+    }
+    public virtual void Rotate(ConsoleKey Key)
     {
 
     }

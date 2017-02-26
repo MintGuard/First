@@ -32,11 +32,12 @@ public class Player : Person
     public delegate void Acted(object sender, PlayerEventArgs e);
     public event Acted OnSomeAction;
 
-    public override void Move()
+    public override void Move(ConsoleKey Key)
     {
-        if (Program.Map[this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.x, this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around.y] == "N")
+        List<IPointAround> pointsAround = this.ReturnPoints(this.Position);
+        if (Program.Map[pointsAround.Where(x => x.Input == Key).FirstOrDefault().Around.x, pointsAround.Where(x => x.Input == Key).FirstOrDefault().Around.y] == "N")
         {
-            this.Position = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Around;
+            this.Position = pointsAround.Where(x => x.Input == Key).FirstOrDefault().Around;
         }
         else
         {
@@ -44,11 +45,12 @@ public class Player : Person
         }
     }
 
-    public override void Rotate()
+    public override void Rotate(ConsoleKey Key)
     {
-        if (this.SightDirection != this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight)
+        List<IPointAround> pointsAround = this.ReturnPoints(this.Position);
+        if (this.SightDirection != pointsAround.Where(x => x.Input == Key).FirstOrDefault().Sight)
         {
-            this.SightDirection = this.ReturnPoints(this.Position).Where(x => x.Input == Console.ReadKey().Key).FirstOrDefault().Sight;
+            this.SightDirection = pointsAround.Where(x => x.Input == Key).FirstOrDefault().Sight;
         }
         else
         {
@@ -71,12 +73,12 @@ public class Player : Person
         {
             List<string> ActList = new List<string> { "M", "A", "R", "S" };
             string tempAction = Console.ReadLine();
-            Console.Read();
+            
             if (tempAction == "M")
             {
                 Console.WriteLine("Нажми стрелку");
-                Console.ReadKey();
-                this.Move();
+                ConsoleKey Key = Console.ReadKey().Key;
+                this.Move(Key);
             }
 
             else if (tempAction == "A")
@@ -90,8 +92,8 @@ public class Player : Person
             else if (tempAction == "R")
             {
                 Console.WriteLine("Куда? Жмякни по стрелкам и будет тебе щастье");
-                Console.ReadLine();
-                this.Rotate();
+                ConsoleKey Key = Console.ReadKey().Key;
+                this.Rotate(Key);
             }
 
 

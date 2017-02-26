@@ -21,7 +21,7 @@ public interface IPerson
     /// Методы, которые выполняют все персонажи
     /// </summary>
     /// <param name="Target"></param>
-    List<IZoglushka> ReturnPoints(Position currentPoint);
+    List<IPointAround> ReturnPoints(Position currentPoint);
     void Attack(IPerson Target);  
     void Move();
     void Search();
